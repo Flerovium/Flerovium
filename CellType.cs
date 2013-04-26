@@ -1,8 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-public class Class1
+namespace Labyrinth
 {
-	public Class1()
-	{
-	}
+    enum CellType
+    {
+        Wall,
+        Empty,
+        Player
+    }
 }
