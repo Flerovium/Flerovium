@@ -19,6 +19,7 @@ namespace Labyrinth
         {
             this.row = row;
             this.col = col;
+            this.type = CellType.Empty;
         }
 
         public Cell(int row, int col, CellType type) : this(row, col)
