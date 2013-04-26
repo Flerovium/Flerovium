@@ -15,17 +15,15 @@ namespace Labyrinth
         private int col;
         private CellType type;
 
-        public Cell(int row, int col, CellType type)//better using fields
-        {
-            this.row = row;
-            this.col = col;
-            this.type = type;
-        }
-
         public Cell(int row, int col)//better using fields
         {
             this.row = row;
             this.col = col;
+        }
+
+        public Cell(int row, int col, CellType type) : this(row, col)
+        {
+            this.type = type;
         }
         
         //public int Row { get; set; }
