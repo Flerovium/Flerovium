@@ -22,8 +22,10 @@ namespace Labyrinth
             this.type = CellType.Empty;
         }
 
-        public Cell(int row, int col, CellType type) : this(row, col)
+        public Cell(int row, int col, CellType type) 
         {
+            this.row = row;
+            this.col = col;
             this.type = type;
         }
         
