@@ -11,7 +11,7 @@ namespace Labyrinth
     {
         static void Main()
         {
-            Ladder ladder = new Ladder();
+            ScoreBoard ladder = new ScoreBoard();
             Random rand = new Random();
             while (1 == 1)
             {

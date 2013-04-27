@@ -7,7 +7,7 @@ namespace Labyrinth
 {
     class Game
     {
-        public Game(Random rand, Ladder ladder)
+        public Game(Random rand, ScoreBoard ladder)
         {
             Labyrinth labyrinth = new Labyrinth(rand);
             
@@ -27,7 +27,7 @@ namespace Labyrinth
             {
                 Console.WriteLine("Congratulations! You escaped in {0} moves.",
                     movesCount);
-                if (ladder.ResultQualifiesInLadder(movesCount))
+                if (ladder.IsInScoreboard(movesCount))
                 {
                     Console.WriteLine(
                         UserInputAndOutput.ENTER_NAME_FOR_SCOREBOARD_MSG);
@@ -99,7 +99,7 @@ namespace Labyrinth
         }
 
         private void ProccessInput(string input, Labyrinth labyrinth,
-            ref int movesCount, Ladder ladder)
+            ref int movesCount, ScoreBoard ladder)
         {
             string inputToLower = input.ToLower();
             switch (inputToLower)
