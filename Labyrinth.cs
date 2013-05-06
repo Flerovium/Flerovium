@@ -1,25 +1,35 @@
-﻿
-namespace Labyrinth
+﻿namespace Labyrinth
 {
-
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Text;
 
-
-    class Labyrinth
+    public class Labyrinth
     {
         public const int LABYRINTH_SIZE = 7;
-        public Cell currentCell;
         private readonly int labyrintStartRow = LABYRINTH_SIZE / 2;
         private readonly int labyrinthStartCol = LABYRINTH_SIZE / 2;
+        private Cell currentCell;
         private Cell[,] labyrinth;
 
         public Labyrinth(Random rand)
         {
             this.GenerateLabyrinth(rand);
-            this.currentCell = this.labyrinth[this.labyrintStartRow, this.labyrintStartRow];
+            this.CurrentCell = this.labyrinth[this.labyrintStartRow, this.labyrintStartRow];
+        }
+
+        public Cell CurrentCell 
+        {
+            get
+            {
+                return this.currentCell;
+            }
+
+            set
+            {
+                this.currentCell = value;
+            }
         }
 
         public Cell GetCell(int row, int col)
@@ -45,7 +55,7 @@ namespace Labyrinth
 
             this.labyrinth[newRow, newCol].Type = CellType.Player;
             this.labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
-            this.currentCell = this.labyrinth[newRow, newCol];
+            this.CurrentCell = this.labyrinth[newRow, newCol];
 
             return true;
         }
@@ -134,6 +144,7 @@ namespace Labyrinth
 
             return pathExists;
         }
+
         private void GenerateLabyrinth(Random rand)
         {
             this.labyrinth = new Cell[LABYRINTH_SIZE, LABYRINTH_SIZE];
@@ -167,13 +178,5 @@ namespace Labyrinth
                 this.GenerateLabyrinth(rand);
             }
         }
-    }
-
-    public enum Direction
-    {
-        Up,
-        Down,
-        Left,
-        Right
     }
 }
