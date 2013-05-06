@@ -8,21 +8,14 @@ namespace Labyrinth
     class Labyrinth
     {
         public const int LABYRINTH_SIZE = 7;
-        
-        //initial player's position
-        //private readonly int LabyrintStartRow = LABYRINTH_SIZE / 2;
-        private readonly int LabyrintStartRow = 3;
-        //private readonly int LabyrinthStartCol = LABYRINTH_SIZE / 2;
-        private readonly int LabyrinthStartCol = 3;
-
+        private readonly int LabyrintStartRow = LABYRINTH_SIZE / 2;
+        private readonly int LabyrinthStartCol = LABYRINTH_SIZE / 2;
         private Cell[,] labyrinth;
         public Cell currentCell;
-        
-        //public Labyrinth(Random rand)
-        public Labyrinth(Random random)
+
+        public Labyrinth(Random rand)
         {
-            //GenerateLabyrinth(rand);
-            GenerateLabyrinth(random);
+            GenerateLabyrinth(rand);
             currentCell = labyrinth[LabyrintStartRow, LabyrintStartRow];
         }
 
@@ -47,8 +40,8 @@ namespace Labyrinth
                 return false;
             }
 
-            this.labyrinth[newRow, newCol].type = '*';
-            this.labyrinth[cell.Row, cell.Col].type = '-';
+            this.labyrinth[newRow, newCol].ValueChar = '*';
+            this.labyrinth[cell.Row, cell.Col].ValueChar = '-';
             this.currentCell = labyrinth[newRow, newCol];
             return true;
         }
@@ -136,8 +129,7 @@ namespace Labyrinth
             return pathExists;
         }
 
-        //private void GenerateLabyrinth(Random rand)
-        private void GenerateLabyrinth(Random random)
+        private void GenerateLabyrinth(Random rand)
         {
             this.labyrinth = new Cell[LABYRINTH_SIZE, LABYRINTH_SIZE];
 
@@ -145,8 +137,7 @@ namespace Labyrinth
             {
                 for (int col = 0; col < LABYRINTH_SIZE; col++)
                 {
-                    //int cellRandomValue = rand.Next(0, 2);
-                    int cellRandomValue = random.Next(0, 2);
+                    int cellRandomValue = rand.Next(0, 2);
                     char charValue;
                     if (cellRandomValue == 0)
                     {
@@ -161,23 +152,15 @@ namespace Labyrinth
                 }
             }
 
-            //this.labyrinth[LabyrintStartRow, LabyrinthStartCol ].ValueChar = '*';
-            this.labyrinth[LabyrintStartRow, LabyrinthStartCol].type = '*';
+            this.labyrinth[LabyrintStartRow, LabyrinthStartCol ].ValueChar = '*';
             bool exitPathExists = ExitPathExists();
 
             if (!exitPathExists)
             {
-                GenerateLabyrinth(random);
+                GenerateLabyrinth(rand);
             }
         }
     }
 
-    //public enum Direction { Up, Down, Left, Right };
-    public enum Direction 
-    {
-        Up, 
-        Down, 
-        Left,
-        Right
-    };
+    public enum Direction {Up, Down, Left, Right};
 }
