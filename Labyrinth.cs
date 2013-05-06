@@ -12,31 +12,33 @@ namespace Labyrinth
         private readonly int LabyrinthStartCol = LABYRINTH_SIZE / 2;
         private Cell[,] labyrinth;
         public Cell currentCell;
-
         public Labyrinth(Random rand)
         {
             GenerateLabyrinth(rand);
             currentCell = labyrinth[LabyrintStartRow, LabyrintStartRow];
         }
-
         public Cell GetCell(int row, int col)
         {
             return labyrinth[row, col];
         }
-
         public bool TryMove(Cell cell, Direction direction)
         {
             int newRow;
             int newCol;
-            FindNewCellCoordinates(cell.Row, cell.Col, direction, out newRow, out newCol);
+            FindNewCellCoordinates(cell.Row, cell.Col, direction,
+                out newRow, out newCol);
 
-            if (newRow < 0 || newCol < 0 || newRow >= labyrinth.GetLength(0) || newCol >= labyrinth.GetLength(1))
+            if (newRow < 0 || newCol < 0 ||
+                newRow >= labyrinth.GetLength(0) || newCol >= labyrinth.GetLength(1))
             {
                 return false;
             }
 
             if (!labyrinth[newRow, newCol].IsEmpty())
             {
+
+
+
                 return false;
             }
 
@@ -46,7 +48,8 @@ namespace Labyrinth
             return true;
         }
 
-        private void FindNewCellCoordinates(int row, int col, Direction direction, out int newRow, out int newCol)
+        private void FindNewCellCoordinates(int row, int col, Direction direction,
+            out int newRow, out int newCol)
         {
             newRow = row;
             newCol = col;
@@ -57,11 +60,17 @@ namespace Labyrinth
             }
             else if (direction == Direction.Down)
             {
+
+
+
                 newRow = newRow + 1;
             }
             else if (direction == Direction.Left)
             {
                 newCol = newCol - 1;
+
+
+
             }
             else if (direction == Direction.Right)
             {
@@ -69,13 +78,19 @@ namespace Labyrinth
             }
         }
 
-        private void premestvane(Cell cell, Direction direction, Queue<Cell> cellsOrder, HashSet<Cell> visitedCells)
+        private void premestvane(Cell cell, Direction direction,
+            Queue<Cell> cellsOrder, HashSet<Cell> visitedCells)
         {
             int newRow;
             int newCol;
-            FindNewCellCoordinates(cell.Row, cell.Col, direction, out newRow, out newCol);
+            FindNewCellCoordinates(cell.Row, cell.Col, direction,
+                out newRow, out newCol);
 
-            if (newRow < 0 || newCol < 0 || newRow >= labyrinth.GetLength(0) || newCol >= labyrinth.GetLength(1))
+            if (newRow < 0 || newCol < 0 ||
+                newRow >= labyrinth.GetLength(0) || newCol >= labyrinth.GetLength(1))
+
+
+
             {
                 return;
             }
@@ -94,8 +109,13 @@ namespace Labyrinth
         private bool ExitFound(Cell cell)
         {
             bool exitFound = false;
-            
-            if (cell.Row == LABYRINTH_SIZE - 1 || cell.Col == LABYRINTH_SIZE - 1 || cell.Row == 0 || cell.Col == 0)
+            if (cell.Row == LABYRINTH_SIZE - 1 ||
+
+
+
+                cell.Col == LABYRINTH_SIZE - 1 ||
+                cell.Row == 0 ||
+                cell.Col == 0)
             {
                 exitFound = true;
             }
@@ -109,26 +129,31 @@ namespace Labyrinth
             Cell startCell = labyrinth[LabyrintStartRow, LabyrinthStartCol];
             cellsOrder.Enqueue(startCell);
             HashSet<Cell> visitedCells = new HashSet<Cell>();
-            bool pathExists = false;
 
+            bool pathExists = false;
             while (cellsOrder.Count > 0)
             {
                 Cell currentCell = cellsOrder.Dequeue();
                 visitedCells.Add(currentCell);
                 if (ExitFound(currentCell))
                 {
+
+
                     pathExists = true;
                     break;
                 }
 
-                premestvane(currentCell, Direction.Down, cellsOrder, visitedCells);
+                premestvane(currentCell, Direction.Down, cellsOrder,visitedCells);
                 premestvane(currentCell, Direction.Up, cellsOrder, visitedCells);
+
+
+
                 premestvane(currentCell, Direction.Left, cellsOrder, visitedCells);
                 premestvane(currentCell, Direction.Right, cellsOrder, visitedCells);
             }
+
             return pathExists;
         }
-
         private void GenerateLabyrinth(Random rand)
         {
             this.labyrinth = new Cell[LABYRINTH_SIZE, LABYRINTH_SIZE];
@@ -138,6 +163,7 @@ namespace Labyrinth
                 for (int col = 0; col < LABYRINTH_SIZE; col++)
                 {
                     int cellRandomValue = rand.Next(0, 2);
+
                     char charValue;
                     if (cellRandomValue == 0)
                     {
@@ -147,14 +173,12 @@ namespace Labyrinth
                     {
                         charValue = Cell.CELL_WALL_VALUE;
                     }
-
                     this.labyrinth[row,col] = new Cell(row, col, charValue);
                 }
             }
-
             this.labyrinth[LabyrintStartRow, LabyrinthStartCol ].ValueChar = '*';
-            bool exitPathExists = ExitPathExists();
 
+            bool exitPathExists = ExitPathExists();
             if (!exitPathExists)
             {
                 GenerateLabyrinth(rand);
