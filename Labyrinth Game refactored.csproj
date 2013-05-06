@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Cell.cs" />
     <Compile Include="CellType.cs" />
+    <Compile Include="Direction.cs" />
     <Compile Include="Game.cs" />
     <Compile Include="LabTest.cs" />
     <Compile Include="Labyrinth.cs" />
