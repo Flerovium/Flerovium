@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace Labyrinth
 {
-    internal class Cell
+    public class Cell
     {
         private int row;
         private int col;
@@ -11,8 +11,8 @@ namespace Labyrinth
 
         public Cell(int row, int col)
         {
-            this.row = row;
-            this.col = col;
+            this.Row = row;
+            this.Col = col;
             this.type = CellType.Empty;
         }
 
@@ -29,7 +29,7 @@ namespace Labyrinth
             {
                 return this.row;
             }
-            internal set
+            set
             {
                 if (value < 0)
                 {
@@ -46,7 +46,7 @@ namespace Labyrinth
             {
                 return this.col;
             }
-            internal set
+            set
             {
                 if (value < 0)
                 {
@@ -63,7 +63,7 @@ namespace Labyrinth
             {
                 return this.type;
             }
-            internal set
+            set
             {
                 this.type = value;
             }
