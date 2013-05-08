@@ -11,15 +11,15 @@ namespace Labyrinth
         {
             Labyrinth labyrinth = new Labyrinth(rand);
             
-            UserInputAndOutput.PrintWelcomeMessage();
+            Drawer.PrintWelcomeMessage();
             int movesCount = 0;
 
             string input = "";
 
             while (!IsGameOver(labyrinth) && input != "restart")
             {
-                UserInputAndOutput.PrinyLabyrinth(labyrinth);
-                input = UserInputAndOutput.GetInput();
+                Drawer.PrintLabyrinth(labyrinth);
+                input = UserInput.GetInput();
                 ProccessInput(input, labyrinth, ref movesCount, ladder);
             }
 
@@ -30,7 +30,7 @@ namespace Labyrinth
                 if (ladder.IsInScoreboard(movesCount))
                 {
                     Console.WriteLine(
-                        UserInputAndOutput.ENTER_NAME_FOR_SCOREBOARD_MSG);
+                        MenuMessages.EnterPlayerName);
 
 
 
@@ -84,7 +84,7 @@ namespace Labyrinth
                         labyrinth.TryMove(labyrinth.CurrentCell, Direction.Right);
                     break;
                 default:
-                    Console.WriteLine(UserInputAndOutput.INVALID_MOVE_MSG);
+                    Console.WriteLine(MenuMessages.InvalidMove);
                     break;
 
 
@@ -93,7 +93,7 @@ namespace Labyrinth
 
             if (moveDone == false)
             {
-                Console.WriteLine(UserInputAndOutput.INVALID_MOVE_MSG);
+                Console.WriteLine(MenuMessages.InvalidMove);
             }
 
             return moveDone;
@@ -122,14 +122,14 @@ namespace Labyrinth
                     Console.WriteLine(ladder.ToString());
                     break;
                 case "exit":
-                    Console.WriteLine(UserInputAndOutput.GOODBYE_MSG);
+                    Console.WriteLine(MenuMessages.Goodbye);
                     Environment.Exit(0);
                     break;
                 case "restart":
                     break;
                 default:
-                    string errorMessage = UserInputAndOutput.INVALID_COMMAND_MSG;
-                    Console.WriteLine(errorMessage);
+                    //string errorMessage = MenuMessages.InvalidCommand;
+                    Console.WriteLine(MenuMessages.InvalidCommand);
                     break;
             }
         }
