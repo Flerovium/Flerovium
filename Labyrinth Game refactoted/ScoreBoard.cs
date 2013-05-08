@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    internal class ScoreBoard
+    public class ScoreBoard
     {
         private List<Result> topResults;
 
@@ -21,7 +21,7 @@ namespace Labyrinth
             {
                 return this.topResults;
             }
-            internal set
+            set
             {
                 if (value == null)
                 {

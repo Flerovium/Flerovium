@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    class Result: IComparable<Result>
+    public class Result: IComparable<Result>
     {
         private int movesCount; 
         private string playerName;
