@@ -54,7 +54,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Flerovium\Labyrinth Game refactored.csproj">
+    <ProjectReference Include="..\Labyrinth Game refactoted\Labyrinth Game refactored.csproj">
       <Project>{810f1946-f8be-4d85-acad-6acd92fd2439}</Project>
       <Name>Labyrinth Game refactored</Name>
     </ProjectReference>
