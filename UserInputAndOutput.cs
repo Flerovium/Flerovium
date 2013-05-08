@@ -45,7 +45,8 @@ namespace Labyrinth
                 for (int col = 0; col < labyrinthSize; col++)
                 {
                     Cell cell = labyrinth.GetCell(row, col);
-                    Console.Write(cell.ValueChar + " ");
+                    //Console.Write(cell.ValueChar + " ");
+                    Console.Write(cell.ToString() + " ");
                 }
                 Console.WriteLine();
             }
