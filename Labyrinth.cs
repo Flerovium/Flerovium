@@ -19,7 +19,8 @@
             this.CurrentCell = this.labyrinth[this.labyrintStartRow, this.labyrintStartRow];
         }
 
-        public Cell CurrentCell 
+       // public Cell CurrentCell 
+        internal Cell CurrentCell 
         {
             get
             {
@@ -32,12 +33,14 @@
             }
         }
 
-        public Cell GetCell(int row, int col)
+        //public Cell GetCell(int row, int col)
+        internal Cell GetCell(int row, int col)
         {
             return this.labyrinth[row, col];
         }
 
-        public bool TryMove(Cell cell, Direction direction)
+        //public bool TryMove(Cell cell, Direction direction)
+        internal bool TryMove(Cell cell, Direction direction)
         {
             int newRow;
             int newCol;
