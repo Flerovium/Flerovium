@@ -80,13 +80,16 @@ namespace Labyrinth
         {
             Result result = new Result(movesCount, playerName);
 
-            if (this.TopResults.Count == this.TopResults.Capacity)
+            if (IsInScoreboard(movesCount))
             {
-                this.TopResults[topResults.Count - 1] = result;
-            }
-            else
-            {
-                this.TopResults.Add(result);
+                if (this.TopResults.Count == this.TopResults.Capacity)
+                {
+                    this.TopResults[topResults.Count - 1] = result;
+                }
+                else
+                {
+                    this.TopResults.Add(result);
+                }
             }
 
             topResults.Sort();

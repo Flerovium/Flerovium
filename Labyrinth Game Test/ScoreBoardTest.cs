@@ -48,5 +48,35 @@ namespace Labyrinth_Game_Test
 
             scoreboard.TopResults = results;
         }
+
+        [TestMethod]
+        public void ScoreBoardAddResultsTest()
+        {
+            ScoreBoard scoreboard = new ScoreBoard(5);
+            scoreboard.AddResult(5, "Player" + 5);
+            scoreboard.AddResult(6, "Player" + 6);
+            scoreboard.AddResult(2, "Player" + 2);
+            scoreboard.AddResult(4, "Player" + 4);
+            scoreboard.AddResult(7, "Player" + 7);
+            scoreboard.AddResult(3, "Player" + 3);
+            int actual = scoreboard.TopResults[1].MovesCount;
+
+            Assert.AreEqual(3, actual);
+        }
+
+        [TestMethod]
+        public void ScoreBoardNotAddedResultsTest()
+        {
+            ScoreBoard scoreboard = new ScoreBoard(5);
+            scoreboard.AddResult(5, "Player" + 5);
+            scoreboard.AddResult(6, "Player" + 6);
+            scoreboard.AddResult(2, "Player" + 2);
+            scoreboard.AddResult(4, "Player" + 4);
+            scoreboard.AddResult(7, "Player" + 7);
+            scoreboard.AddResult(9, "Player" + 9);
+            int actual = scoreboard.TopResults[4].MovesCount;
+
+            Assert.AreEqual(7, actual);
+        }
     }
 }
