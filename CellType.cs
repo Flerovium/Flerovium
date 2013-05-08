@@ -1,12 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Labyrinth
 {
-    /// <summary>
-    /// Indicate cell type in order to be displayed differently
-    /// </summary>
-    public enum CellType
+    enum CellType
     {
         Wall,
         Empty,

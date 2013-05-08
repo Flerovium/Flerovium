@@ -35,8 +35,7 @@ namespace Labyrinth
 
 
                     string name = Console.ReadLine();
-                    //ladder.AddResultInLadder(movesCount, name);
-                    ladder.AddResult(movesCount, name);
+                    ladder.AddResultInLadder(movesCount, name);
                 }
             }
             Console.WriteLine();
@@ -118,8 +117,7 @@ namespace Labyrinth
                     }
                     break;
                 case "top":
-                    //ladder.PrintLadder();
-                    Console.WriteLine(ladder.ToString());
+                    ladder.PrintLadder();
                     break;
                 case "exit":
                     Console.WriteLine(UserInputAndOutput.GOODBYE_MSG);

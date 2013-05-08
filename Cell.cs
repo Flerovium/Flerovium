@@ -1,15 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 
 namespace Labyrinth
 {
-    internal class Cell
+    class Cell
     {
+        //Use enum CellType instead
+        //public const char CELL_EMPTY_VALUE = '-';
+        //public const char CELL_WALL_VALUE = 'X';
+        //Create fields
         private int row;
         private int col;
         private CellType type;
 
-        public Cell(int row, int col)
+        public Cell(int row, int col)//better using fields
         {
             this.row = row;
             this.col = col;
@@ -18,59 +24,60 @@ namespace Labyrinth
 
         public Cell(int row, int col, CellType type) 
         {
-            this.Row = row;
-            this.Col = col;
+            this.row = row;
+            this.col = col;
             this.type = type;
         }
         
+        //public int Row { get; set; }
         public int Row
         {
             get
             {
                 return this.row;
             }
-            internal set
+            set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Cell Row is not allowed to be negative!");
-                }
-
                 this.row = value;
             }
         }
 
+        //public int Col { get; set; }
         public int Col
         {
             get
             {
                 return this.col;
             }
-            internal set
+            set
             {
-                if (value < 0)
-                {
-                    throw new ArgumentException("Cell Col is not allowed to be negative!");
-                }
-
                 this.col = value;
             }
         }
 
+        //public char ValueChar { get; set; } 
         public CellType Type
         {
             get
             {
                 return this.type;
             }
-            internal set
+            set
             {
                 this.type = value;
             }
         }
 
+        //public Cell(int row, int col, char value)
+        //{
+        //    this.Row = row;
+        //    this.Col = col;
+        //    this.ValueChar = value;
+        //}
+
         public bool IsEmpty()
         {
+            //if(this.ValueChar == CELL_EMPTY_VALUE)
             if (this.Type == CellType.Empty)
             {
                 return true;
@@ -81,24 +88,24 @@ namespace Labyrinth
 
         public override string ToString()
         {
-            string cellSymbol = null;
+            string wall = null;
 
             if (this.Type == CellType.Wall)
             {
-                cellSymbol = "#";
+                wall = "#";
 
-                return cellSymbol;
+                return wall;
             }
             else if (this.type == CellType.Player)
             {
-                cellSymbol = "*";
+                wall = "*";
 
-                return cellSymbol;
+                return wall;
             }
 
-            cellSymbol = "-";
+            wall = "-";
 
-            return cellSymbol;
+            return wall;
         }
     }
 }
