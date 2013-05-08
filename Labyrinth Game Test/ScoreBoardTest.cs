@@ -78,5 +78,33 @@ namespace Labyrinth_Game_Test
 
             Assert.AreEqual(7, actual);
         }
+
+        [TestMethod]
+        public void ScoreBoardEmptyToStringTest()
+        {
+            ScoreBoard scoreboard = new ScoreBoard(5);
+            string actual = scoreboard.ToString();
+
+            Assert.AreEqual("The scoreboard is empty!", actual);
+        }
+
+        [TestMethod]
+        public void ScoreBoardToStringTest()
+        {
+            ScoreBoard scoreboard = new ScoreBoard(5);
+            scoreboard.AddResult(5, "Player" + 5);
+            scoreboard.AddResult(6, "Player" + 6);
+            scoreboard.AddResult(2, "Player" + 2);
+            scoreboard.AddResult(4, "Player" + 4);
+            scoreboard.AddResult(7, "Player" + 7);
+            string actual = scoreboard.ToString();
+            string expected = "1. Player2 --> 2 moves\n" +
+                              "2. Player4 --> 4 moves\n" +
+                              "3. Player5 --> 5 moves\n" +
+                              "4. Player6 --> 6 moves\n" +
+                              "5. Player7 --> 7 moves\n";
+
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

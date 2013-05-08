@@ -53,7 +53,7 @@ namespace Labyrinth
                 for (int index = 0; index < topResults.Count; index++)
                 {
                     currentResult = topResults[index];
-                    scoreBoard.Append(string.Format("{0}. {1} --> {2} moves", index + 1,
+                    scoreBoard.Append(string.Format("{0}. {1} --> {2} moves\n", index + 1,
                         currentResult.PlayerName, currentResult.MovesCount));
                 }
 
