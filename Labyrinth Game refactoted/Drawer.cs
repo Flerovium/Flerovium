@@ -14,7 +14,7 @@ namespace Labyrinth
  
         public static void PrintLabyrinth(Labyrinth labyrinth)
         {
-            int labyrinthSize = Labyrinth.LABYRINTH_SIZE;
+            int labyrinthSize = Labyrinth.LabyrinthSize;
             for (int row = 0; row < labyrinthSize; row++)
             {
                 for (int col = 0; col < labyrinthSize; col++)
