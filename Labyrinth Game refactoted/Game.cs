@@ -57,19 +57,19 @@ namespace Labyrinth
             {
                 case "u":
                     moveDone =
-                        labyrinth.TryMove(labyrinth.CurrentCell, Direction.Up);
+                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Up);
                     break;
                 case "d":
                     moveDone =
-                        labyrinth.TryMove(labyrinth.CurrentCell, Direction.Down);
+                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Down);
                     break;
                 case "l":
                     moveDone =
-                        labyrinth.TryMove(labyrinth.CurrentCell, Direction.Left);
+                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Left);
                     break;
                 case "r":
                     moveDone =
-                        labyrinth.TryMove(labyrinth.CurrentCell, Direction.Right);
+                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Right);
                     break;
                 default:
                     Console.WriteLine(MenuMessages.InvalidMove);
