@@ -12,9 +12,9 @@ namespace Labyrinth
             Console.WriteLine(MenuMessages.Welcome);
         }
  
-        public static void PrintLabyrinth(Labyrinth labyrinth)
+        public static void Draw(object obj)
         {
-            Console.WriteLine(labyrinth.ToString());
+            Console.WriteLine(obj.ToString());
         }
     }
 }

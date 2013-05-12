@@ -19,6 +19,6 @@ namespace Labyrinth
 
         event EventHandler OnTopScorePressed;
 
-        void ProcessInput();
+        void ProcessInput(int inParam, out int outParam);
     }
 }

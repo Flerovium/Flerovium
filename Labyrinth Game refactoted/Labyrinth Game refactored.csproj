@@ -55,8 +55,9 @@
     <Compile Include="CellType.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="IDrawable.cs" />
     <Compile Include="IUserInterface.cs" />
-    <Compile Include="LabTest.cs" />
+    <Compile Include="LabyrinthMain.cs" />
     <Compile Include="Labyrinth.cs" />
     <Compile Include="MenuMessages.Designer.cs">
       <AutoGen>True</AutoGen>
