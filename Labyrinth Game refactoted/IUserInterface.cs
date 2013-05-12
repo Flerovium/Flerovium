@@ -9,7 +9,15 @@ namespace Labyrinth
 
         event EventHandler OnRightPressed;
 
-        event EventHandler OnActionPressed;
+        event EventHandler OnUpPressed;
+
+        event EventHandler OnDownPressed;
+
+        event EventHandler OnRestartPressed;
+
+        event EventHandler OnExitPressed;
+
+        event EventHandler OnTopScorePressed;
 
         void ProcessInput();
     }
