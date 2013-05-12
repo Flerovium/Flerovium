@@ -55,6 +55,7 @@
     <Compile Include="CellType.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="IUserInterface.cs" />
     <Compile Include="LabTest.cs" />
     <Compile Include="Labyrinth.cs" />
     <Compile Include="MenuMessages.Designer.cs">
@@ -75,6 +76,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>MenuMessages.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagramLabyrinth.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

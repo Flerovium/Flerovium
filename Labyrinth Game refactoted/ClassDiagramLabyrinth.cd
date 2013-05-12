@@ -29,7 +29,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Labyrinth.Labyrinth">
-    <Position X="6" Y="0.5" Width="2" />
+    <Position X="6" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>QAAAAAAEAMAAAQAAAAEAAAAAAAIDQAAAAEAAAAAAQgA=</HashCode>
       <FileName>Labyrinth.cs</FileName>
