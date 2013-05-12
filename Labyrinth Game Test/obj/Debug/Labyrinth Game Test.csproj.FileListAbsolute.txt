@@ -1,7 +1,0 @@
-C:\Users\Stiliyan\Documents\GitHub\Flerovium\Labyrinth Game Test\bin\Debug\Labyrinth Game Test.dll
-C:\Users\Stiliyan\Documents\GitHub\Flerovium\Labyrinth Game Test\bin\Debug\Labyrinth Game Test.pdb
-C:\Users\Stiliyan\Documents\GitHub\Flerovium\Labyrinth Game Test\bin\Debug\Labyrinth.exe
-C:\Users\Stiliyan\Documents\GitHub\Flerovium\Labyrinth Game Test\bin\Debug\Labyrinth.pdb
-C:\Users\Stiliyan\Documents\GitHub\Flerovium\Labyrinth Game Test\obj\Debug\Labyrinth Game Test.csprojResolveAssemblyReference.cache
-C:\Users\Stiliyan\Documents\GitHub\Flerovium\Labyrinth Game Test\obj\Debug\Labyrinth Game Test.dll
-C:\Users\Stiliyan\Documents\GitHub\Flerovium\Labyrinth Game Test\obj\Debug\Labyrinth Game Test.pdb

@@ -5,23 +5,21 @@
     using System.Linq;
     using System.Text;
 
-    /// <summary>
-    /// represents the functionality of the game labyrinth
-    /// </summary>
     public class Labyrinth
     {
-        public const int LabyrinthSize = 7;
-        private readonly int LabyrintStartRow = 3;
-        private readonly int LabyrinthStartCol = 3;
+        public const int LABYRINTH_SIZE = 7;
+        private readonly int labyrintStartRow = LABYRINTH_SIZE / 2;
+        private readonly int labyrinthStartCol = LABYRINTH_SIZE / 2;
         private Cell currentCell;
         private Cell[,] labyrinth;
 
-        public Labyrinth(Random random)
+        public Labyrinth(Random rand)
         {
-            this.GenerateLabyrinth(random);
-            this.CurrentCell = this.labyrinth[this.LabyrintStartRow, this.LabyrintStartRow];
+            this.GenerateLabyrinth(rand);
+            this.CurrentCell = this.labyrinth[this.labyrintStartRow, this.labyrintStartRow];
         }
 
+       // public Cell CurrentCell 
         internal Cell CurrentCell 
         {
             get
@@ -35,14 +33,13 @@
             }
         }
 
+        //public Cell GetCell(int row, int col)
         internal Cell GetCell(int row, int col)
         {
             return this.labyrinth[row, col];
         }
 
-        /// <summary>
-        /// moving the player to neighboring cell if possible
-        /// </summary>
+        //public bool TryMove(Cell cell, Direction direction)
         internal bool TryMove(Cell cell, Direction direction)
         {
             int newRow;
@@ -116,7 +113,7 @@
         {
             bool exitFound = false;
 
-            if (cell.Row == LabyrinthSize - 1 || cell.Col == LabyrinthSize - 1 || cell.Row == 0 || cell.Col == 0)
+            if (cell.Row == LABYRINTH_SIZE - 1 || cell.Col == LABYRINTH_SIZE - 1 || cell.Row == 0 || cell.Col == 0)
             {
                 exitFound = true;
             }
@@ -127,7 +124,7 @@
         private bool ExitPathExists()
         {
             Queue<Cell> cellsOrder = new Queue<Cell>();
-            Cell startCell = this.labyrinth[this.LabyrintStartRow, this.LabyrinthStartCol];
+            Cell startCell = this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol];
             cellsOrder.Enqueue(startCell);
             HashSet<Cell> visitedCells = new HashSet<Cell>();
 
@@ -153,11 +150,11 @@
 
         private void GenerateLabyrinth(Random rand)
         {
-            this.labyrinth = new Cell[LabyrinthSize, LabyrinthSize];
+            this.labyrinth = new Cell[LABYRINTH_SIZE, LABYRINTH_SIZE];
 
-            for (int row = 0; row < LabyrinthSize; row++)
+            for (int row = 0; row < LABYRINTH_SIZE; row++)
             {
-                for (int col = 0; col < LabyrinthSize; col++)
+                for (int col = 0; col < LABYRINTH_SIZE; col++)
                 {
                     int cellRandomValue = rand.Next(0, 2);
                     CellType charValue;
@@ -175,7 +172,7 @@
                 }
             }
 
-            this.labyrinth[this.LabyrintStartRow, this.LabyrinthStartCol].Type = CellType.Player;
+            this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol].Type = CellType.Player;
 
             bool exitPathExists = this.ExitPathExists();
 
