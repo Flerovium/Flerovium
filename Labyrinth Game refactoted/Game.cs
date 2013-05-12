@@ -12,6 +12,7 @@ namespace Labyrinth
         private IUserInterface keyboard;
         private int moves;
 
+        #region Properties
         public int Moves
         {
             get
@@ -59,6 +60,7 @@ namespace Labyrinth
                 this.keyboard = value;
             }
         }
+        #endregion
 
         public Game(int scoreboardSize)
         {
@@ -93,6 +95,8 @@ namespace Labyrinth
                     string name = Console.ReadLine();
                     //ladder.AddResultInLadder(movesCount, name);
                     scoreboard.AddResult(this.Moves, name);
+                    Console.WriteLine(MenuMessages.EndOrNewGame);
+                    this.keyboard.ProcessInput(this.Moves, out movesCount);
                 }
            // }
             Console.WriteLine();

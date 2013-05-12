@@ -9,11 +9,13 @@ namespace Labyrinth
     {
         public static void PrintWelcomeMessage()
         {
+            Console.WriteLine();
             Console.WriteLine(MenuMessages.Welcome);
         }
  
         public static void Draw(object obj)
         {
+            Console.WriteLine();
             Console.WriteLine(obj.ToString());
         }
     }

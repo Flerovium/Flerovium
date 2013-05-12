@@ -120,8 +120,11 @@
   <data name="EmptyScoreboard" xml:space="preserve">
     <value>Sorry, the scoreboard is empty.</value>
   </data>
+  <data name="EndOrNewGame" xml:space="preserve">
+    <value>If you want to continue, you can enter "r" for restart the game or "e" for exit.</value>
+  </data>
   <data name="EnterMove" xml:space="preserve">
-    <value>Please enter your move (l=left, r-right, u=up, d=down):</value>
+    <value>Please enter your move. For the direction left, right, up and down you can use the arrows.</value>
   </data>
   <data name="EnterPlayerName" xml:space="preserve">
     <value>Please enter your name for the top scoreboard:</value>
@@ -130,7 +133,12 @@
     <value>Good Bye!</value>
   </data>
   <data name="InvalidCommand" xml:space="preserve">
-    <value>Invalid command!</value>
+    <value>Invalid command! 
+Use:	
+- 't' to view the top scoreboard,	
+- 'r' to start a new game	
+- 'e' to quit the game.	
+- the arrows for the directions</value>
   </data>
   <data name="InvalidMove" xml:space="preserve">
     <value>Invalid move! Please use the following command: l=left, r-right, u=up, d=down:</value>
@@ -139,9 +147,8 @@
     <value>Welcome to “Labirinth” game! You should try to escape from it.
 The '*' is the player, the '#' are the walls of labyrinth. You should try to go through the '-' to some of the ends of the labyrinth.
 Use:
-- 'top' to view the top scoreboard, 
-- 'restart' to start a new game
-- 'exit' to quit the game.
-Good luck!</value>
+- 't' to view the top scoreboard, 
+- 'r' to start a new game
+- 'e' to qu</value>
   </data>
 </root>

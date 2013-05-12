@@ -70,7 +70,16 @@ namespace Labyrinth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Please enter your move (l=left, r-right, u=up, d=down):.
+        ///   Looks up a localized string similar to If you want to continue, you can enter &quot;r&quot; for restart the game or &quot;e&quot; for exit..
+        /// </summary>
+        internal static string EndOrNewGame {
+            get {
+                return ResourceManager.GetString("EndOrNewGame", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please enter your move. For the direction left, right, up and down you can use the arrows..
         /// </summary>
         internal static string EnterMove {
             get {
@@ -97,7 +106,12 @@ namespace Labyrinth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid command!.
+        ///   Looks up a localized string similar to Invalid command! 
+        ///Use:	
+        ///- &apos;t&apos; to view the top scoreboard,	
+        ///- &apos;r&apos; to start a new game	
+        ///- &apos;e&apos; to quit the game.	
+        ///- the arrows for the directions.
         /// </summary>
         internal static string InvalidCommand {
             get {
@@ -118,10 +132,9 @@ namespace Labyrinth {
         ///   Looks up a localized string similar to Welcome to “Labirinth” game! You should try to escape from it.
         ///The &apos;*&apos; is the player, the &apos;#&apos; are the walls of labyrinth. You should try to go through the &apos;-&apos; to some of the ends of the labyrinth.
         ///Use:
-        ///- &apos;top&apos; to view the top scoreboard, 
-        ///- &apos;restart&apos; to start a new game
-        ///- &apos;exit&apos; to quit the game.
-        ///Good luck!.
+        ///- &apos;t&apos; to view the top scoreboard, 
+        ///- &apos;r&apos; to start a new game
+        ///- &apos;e&apos; to qu.
         /// </summary>
         internal static string Welcome {
             get {
