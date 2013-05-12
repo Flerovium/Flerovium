@@ -7,7 +7,7 @@
 
     public class Labyrinth
     {
-        public const int LABYRINTH_SIZE = 7;
+        private readonly int labyrinthSize = 7;
         private readonly int labyrintStartRow = 3;
         private readonly int labyrinthStartCol = 3;
         private Cell currentCell;
@@ -111,7 +111,7 @@
         {
             bool exitFound = false;
 
-            if (cell.Row == LABYRINTH_SIZE - 1 || cell.Col == LABYRINTH_SIZE - 1 || cell.Row == 0 || cell.Col == 0)
+            if (cell.Row == labyrinthSize - 1 || cell.Col == labyrinthSize - 1 || cell.Row == 0 || cell.Col == 0)
             {
                 exitFound = true;
             }
@@ -150,11 +150,11 @@
         {
             Random rand = new Random();
 
-            this.labyrinth = new Cell[LABYRINTH_SIZE, LABYRINTH_SIZE];
+            this.labyrinth = new Cell[labyrinthSize, labyrinthSize];
 
-            for (int row = 0; row < LABYRINTH_SIZE; row++)
+            for (int row = 0; row < labyrinthSize; row++)
             {
-                for (int col = 0; col < LABYRINTH_SIZE; col++)
+                for (int col = 0; col < labyrinthSize; col++)
                 {
                     int cellRandomValue = rand.Next(0, 2);
 
