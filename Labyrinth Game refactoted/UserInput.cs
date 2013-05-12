@@ -62,9 +62,9 @@ namespace Labyrinth
                 
                 else if (keyInfo.Key.Equals(ConsoleKey.E))
                 {
-                    if (this.OnExitPressed; != null)
+                    if (this.OnExitPressed != null)
                     {
-                        this.OnExitPressed;(this, new EventArgs());
+                        this.OnExitPressed(this, new EventArgs());
                     }
                 }
                 
