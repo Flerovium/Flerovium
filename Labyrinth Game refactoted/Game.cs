@@ -11,6 +11,42 @@ namespace Labyrinth
         private ScoreBoard scoreboard;
         private IUserInterface keyboard;
 
+        public Labyrinth Labyrinth
+        {
+            get
+            {
+                return this.labyrinth;
+            }
+            set
+            {
+                this.labyrinth = value;
+            }
+        }
+
+        public ScoreBoard Scoreboard
+        {
+            get
+            {
+                return this.scoreboard;
+            }
+            set
+            {
+                this.scoreboard = value;
+            }
+        }
+
+        public IUserInterface Keyboard
+        {
+            get
+            {
+                return this.keyboard;
+            }
+            set
+            {
+                this.keyboard = value;
+            }
+        }
+
         public Game(int scoreboardSize)
         {
             Labyrinth labyrinth = new Labyrinth();
@@ -19,9 +55,9 @@ namespace Labyrinth
             this.keyboard = new KeyboardInterface();
         }
 
-        public void RunGame ()
+        public void RunGame()
         {
-            
+
             Drawer.PrintWelcomeMessage();
             int movesCount = 0;
             string input = "";
@@ -29,6 +65,7 @@ namespace Labyrinth
             while (!IsGameOver() && input != "restart")
             {
                 Drawer.PrintLabyrinth(this.labyrinth);
+                //System.Threading.Thread.Sleep(500);
                 this.keyboard.ProcessInput();
                 //ProccessInput(input, this.labyrinth, ref movesCount, scoreboard);
             }
@@ -47,16 +84,14 @@ namespace Labyrinth
             Console.WriteLine();
         }
 
-        
+
 
         private bool IsGameOver()
         {
             bool isGameOver = false;
             int currentRow = this.labyrinth.CurrentCell.Row;
             int currentCol = this.labyrinth.CurrentCell.Col;
-            if (currentRow == 0 ||
-                currentCol == 0 ||
-                currentRow == this.labyrinth.labyrinthSize - 1 ||
+            if (currentRow == 0 || currentCol == 0 || currentRow == this.labyrinth.labyrinthSize - 1 ||
                 currentCol == this.labyrinth.labyrinthSize - 1)
             {
                 isGameOver = true;
@@ -127,6 +162,43 @@ namespace Labyrinth
                     Console.WriteLine(MenuMessages.InvalidCommand);
                     break;
             }
+        }
+
+        internal void MoveLeft()
+        {
+            this.labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Left);
+        }
+
+        internal void MoveRight()
+        {
+            labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Right);
+        }
+
+        internal void MoveUp()
+        {
+            labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Up);
+        }
+
+        internal void MoveDown()
+        {
+            labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Down);
+        }
+
+        internal void GameRestart()
+        {
+            this.labyrinth = new Labyrinth();
+            this.RunGame();
+        }
+
+        internal void Exit()
+        {
+            Console.WriteLine(MenuMessages.Goodbye);
+            Environment.Exit(0);
+        }
+
+        internal void ShowTopScore()
+        {
+            Console.WriteLine(this.scoreboard.ToString());
         }
     }
 }

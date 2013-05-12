@@ -182,5 +182,22 @@
                 this.GenerateLabyrinth();
             }
         }
+
+        public override string ToString()
+        {
+            StringBuilder buildLabyrint = new StringBuilder();
+            int labyrinthSize = this.labyrinthSize;
+            for (int row = 0; row < labyrinthSize; row++)
+            {
+                for (int col = 0; col < labyrinthSize; col++)
+                {
+                    Cell cell = this.GetCell(row, col);
+                    buildLabyrint.AppendFormat("{0} ", cell.ToString());
+                    //Console.Write(cell.ToString() + " ");
+                }
+                buildLabyrint.AppendFormat("\n");
+            }
+            return buildLabyrint.ToString();
+        }
     }
 }

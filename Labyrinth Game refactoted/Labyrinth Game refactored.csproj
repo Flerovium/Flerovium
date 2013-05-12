@@ -66,7 +66,7 @@
     <Compile Include="ScoreBoard.cs" />
     <Compile Include="Result.cs" />
     <Compile Include="Drawer.cs" />
-    <Compile Include="UserInput.cs" />
+    <Compile Include="KeyboardInterface.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />

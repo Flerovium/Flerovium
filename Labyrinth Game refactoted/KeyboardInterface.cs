@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Labyrinth 
+namespace Labyrinth
 {
     public class KeyboardInterface : IUserInterface
-    {       
+    {
         public void ProcessInput()
-        {            
+        {
+            var keyInfo = Console.ReadKey();
             if (Console.KeyAvailable)
             {
-                var keyInfo = Console.ReadKey();
                 if (keyInfo.Key.Equals(ConsoleKey.LeftArrow))
                 {
                     if (this.OnLeftPressed != null)
@@ -27,7 +27,7 @@ namespace Labyrinth
                         this.OnRightPressed(this, new EventArgs());
                     }
                 }
-                
+
                 else if (keyInfo.Key.Equals(ConsoleKey.UpArrow))
                 {
                     if (this.OnRightPressed != null)
@@ -35,7 +35,7 @@ namespace Labyrinth
                         this.OnUpPressed(this, new EventArgs());
                     }
                 }
-                
+
                 else if (keyInfo.Key.Equals(ConsoleKey.DownArrow))
                 {
                     if (this.OnRightPressed != null)
@@ -51,7 +51,7 @@ namespace Labyrinth
                         this.OnRestartPressed(this, new EventArgs());
                     }
                 }
-                
+
                 else if (keyInfo.Key.Equals(ConsoleKey.T))
                 {
                     if (this.OnTopScorePressed != null)
@@ -59,7 +59,7 @@ namespace Labyrinth
                         this.OnTopScorePressed(this, new EventArgs());
                     }
                 }
-                
+
                 else if (keyInfo.Key.Equals(ConsoleKey.E))
                 {
                     if (this.OnExitPressed != null)
@@ -67,8 +67,8 @@ namespace Labyrinth
                         this.OnExitPressed(this, new EventArgs());
                     }
                 }
-                
-                else 
+
+                else
                 {
                     Console.WriteLine(MenuMessages.InvalidCommand);
                 }
@@ -79,7 +79,7 @@ namespace Labyrinth
 
         public event EventHandler OnRightPressed;
 
-        public event  EventHandler OnUpPressed;
+        public event EventHandler OnUpPressed;
 
         public event EventHandler OnDownPressed;
 
