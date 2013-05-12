@@ -8,18 +8,17 @@
     public class Labyrinth
     {
         public const int LABYRINTH_SIZE = 7;
-        private readonly int labyrintStartRow = LABYRINTH_SIZE / 2;
-        private readonly int labyrinthStartCol = LABYRINTH_SIZE / 2;
+        private readonly int labyrintStartRow = 3;
+        private readonly int labyrinthStartCol = 3;
         private Cell currentCell;
         private Cell[,] labyrinth;
 
-        public Labyrinth(Random rand)
+        public Labyrinth()
         {
-            this.GenerateLabyrinth(rand);
+            this.GenerateLabyrinth();
             this.CurrentCell = this.labyrinth[this.labyrintStartRow, this.labyrintStartRow];
         }
 
-       // public Cell CurrentCell 
         internal Cell CurrentCell 
         {
             get
@@ -33,17 +32,16 @@
             }
         }
 
-        //public Cell GetCell(int row, int col)
         internal Cell GetCell(int row, int col)
         {
             return this.labyrinth[row, col];
         }
 
-        //public bool TryMove(Cell cell, Direction direction)
-        internal bool TryMove(Cell cell, Direction direction)
+        internal bool IsMovePossible(Cell cell, Direction direction)
         {
             int newRow;
             int newCol;
+
             this.FindNewCellCoordinates(cell.Row, cell.Col, direction, out newRow, out newCol);
 
             if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
@@ -148,8 +146,10 @@
             return pathExists;
         }
 
-        private void GenerateLabyrinth(Random rand)
+        private void GenerateLabyrinth()
         {
+            Random rand = new Random();
+
             this.labyrinth = new Cell[LABYRINTH_SIZE, LABYRINTH_SIZE];
 
             for (int row = 0; row < LABYRINTH_SIZE; row++)
@@ -157,6 +157,7 @@
                 for (int col = 0; col < LABYRINTH_SIZE; col++)
                 {
                     int cellRandomValue = rand.Next(0, 2);
+
                     CellType charValue;
 
                     if (cellRandomValue == 0)
@@ -178,7 +179,7 @@
 
             if (!exitPathExists)
             {
-                this.GenerateLabyrinth(rand);
+                this.GenerateLabyrinth();
             }
         }
     }
