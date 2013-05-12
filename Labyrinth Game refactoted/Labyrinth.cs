@@ -7,7 +7,7 @@
 
     public class Labyrinth
     {
-        private readonly int labyrinthSize = 7;
+        public readonly int labyrinthSize = 7;
         private readonly int labyrintStartRow = 3;
         private readonly int labyrinthStartCol = 3;
         private Cell currentCell;
