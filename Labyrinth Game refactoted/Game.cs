@@ -10,10 +10,8 @@ namespace Labyrinth
         public Game(Random rand, ScoreBoard ladder)
         {
             Labyrinth labyrinth = new Labyrinth(rand);
-            
             Drawer.PrintWelcomeMessage();
             int movesCount = 0;
-
             string input = "";
 
             while (!IsGameOver(labyrinth) && input != "restart")
@@ -25,15 +23,10 @@ namespace Labyrinth
 
             if (input != "restart")
             {
-                Console.WriteLine("Congratulations! You escaped in {0} moves.",
-                    movesCount);
+                Console.WriteLine("Congratulations! You escaped in {0} moves.", movesCount);
                 if (ladder.IsInScoreboard(movesCount))
                 {
-                    Console.WriteLine(
-                        MenuMessages.EnterPlayerName);
-
-
-
+                    Console.WriteLine(MenuMessages.EnterPlayerName);
                     string name = Console.ReadLine();
                     //ladder.AddResultInLadder(movesCount, name);
                     ladder.AddResult(movesCount, name);
@@ -42,7 +35,6 @@ namespace Labyrinth
             Console.WriteLine();
         }
 
-
         private bool IsGameOver(Labyrinth labyrinth)
         {
             bool isGameOver = false;
@@ -50,16 +42,12 @@ namespace Labyrinth
             int currentCol = labyrinth.CurrentCell.Col;
             if (currentRow == 0 ||
                 currentCol == 0 ||
-                currentRow == Labyrinth.LABYRINTH_SIZE - 1 ||
-                currentCol == Labyrinth.LABYRINTH_SIZE - 1)
+                currentRow == Labyrinth.LabyrinthSize - 1 ||
+                currentCol == Labyrinth.LabyrinthSize - 1)
             {
                 isGameOver = true;
             }
-
             return isGameOver;
-
-
-
         }
 
         private bool TryMove(string direction, Labyrinth labyrinth)
@@ -86,16 +74,11 @@ namespace Labyrinth
                 default:
                     Console.WriteLine(MenuMessages.InvalidMove);
                     break;
-
-
-
             }
-
             if (moveDone == false)
             {
                 Console.WriteLine(MenuMessages.InvalidMove);
             }
-
             return moveDone;
         }
 
