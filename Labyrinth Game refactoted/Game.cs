@@ -7,50 +7,64 @@ namespace Labyrinth
 {
     class Game
     {
-        public Game(Random rand, ScoreBoard ladder)
+        private Labyrinth labyrinth;
+        private ScoreBoard scoreboard;
+        private IUserInterface keyboard;
+
+        public Game(int scoreboardSize)
         {
-            Labyrinth labyrinth = new Labyrinth(rand);
+            Labyrinth labyrinth = new Labyrinth();
+            this.labyrinth = labyrinth;
+            this.scoreboard = new ScoreBoard(scoreboardSize);
+            this.keyboard = new KeyboardInterface();
+        }
+
+        public void RunGame ()
+        {
+            
             Drawer.PrintWelcomeMessage();
             int movesCount = 0;
             string input = "";
 
-            while (!IsGameOver(labyrinth) && input != "restart")
+            while (!IsGameOver() && input != "restart")
             {
-                Drawer.PrintLabyrinth(labyrinth);
-                input = UserInput.GetInput();
-                ProccessInput(input, labyrinth, ref movesCount, ladder);
+                Drawer.PrintLabyrinth(this.labyrinth);
+                this.keyboard.ProcessInput();
+                //ProccessInput(input, this.labyrinth, ref movesCount, scoreboard);
             }
 
             if (input != "restart")
             {
                 Console.WriteLine("Congratulations! You escaped in {0} moves.", movesCount);
-                if (ladder.IsInScoreboard(movesCount))
+                if (scoreboard.IsInScoreboard(movesCount))
                 {
                     Console.WriteLine(MenuMessages.EnterPlayerName);
                     string name = Console.ReadLine();
                     //ladder.AddResultInLadder(movesCount, name);
-                    ladder.AddResult(movesCount, name);
+                    scoreboard.AddResult(movesCount, name);
                 }
             }
             Console.WriteLine();
         }
 
-        private bool IsGameOver(Labyrinth labyrinth)
+        
+
+        private bool IsGameOver()
         {
             bool isGameOver = false;
-            int currentRow = labyrinth.CurrentCell.Row;
-            int currentCol = labyrinth.CurrentCell.Col;
+            int currentRow = this.labyrinth.CurrentCell.Row;
+            int currentCol = this.labyrinth.CurrentCell.Col;
             if (currentRow == 0 ||
                 currentCol == 0 ||
-                currentRow == Labyrinth.LabyrinthSize - 1 ||
-                currentCol == Labyrinth.LabyrinthSize - 1)
+                currentRow == this.labyrinth.labyrinthSize - 1 ||
+                currentCol == this.labyrinth.labyrinthSize - 1)
             {
                 isGameOver = true;
             }
             return isGameOver;
         }
 
-        private bool TryMove(string direction, Labyrinth labyrinth)
+        private bool TryMove(string direction)
         {
             bool moveDone = false;
             switch (direction)
@@ -82,8 +96,7 @@ namespace Labyrinth
             return moveDone;
         }
 
-        private void ProccessInput(string input, Labyrinth labyrinth,
-            ref int movesCount, ScoreBoard ladder)
+        private void ProccessInput(string input, Labyrinth labyrinth, ref int movesCount, ScoreBoard ladder)
         {
             string inputToLower = input.ToLower();
             switch (inputToLower)
@@ -93,8 +106,7 @@ namespace Labyrinth
                 case "l":
                 case "r":
                     //fallthrough
-                    bool moveDone =
-                        TryMove(inputToLower, labyrinth);
+                    bool moveDone = TryMove(inputToLower);
                     if (moveDone == true)
                     {
                         movesCount++;
