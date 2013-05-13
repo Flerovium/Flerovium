@@ -205,6 +205,7 @@ namespace Labyrinth
         internal void GameRestart()
         {
             this.labyrinth = new Labyrinth();
+            this.Moves = 0;
             this.RunGame();
         }
 

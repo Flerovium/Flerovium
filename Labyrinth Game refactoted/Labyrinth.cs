@@ -42,7 +42,7 @@
             int newRow;
             int newCol;
 
-            this.FindNewCellCoordinates(cell.Row, cell.Col, direction, out newRow, out newCol);
+            this.FindNewCellCoordinates(cell/*.Row, cell.Col*/, direction, out newRow, out newCol);
 
             if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
             {
@@ -57,14 +57,13 @@
             this.labyrinth[newRow, newCol].Type = CellType.Player;
             this.labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
             this.CurrentCell = this.labyrinth[newRow, newCol];
-
             //return true;
         }
 
-        private void FindNewCellCoordinates(int row, int col, Direction direction, out int newRow, out int newCol)
+        private void FindNewCellCoordinates(Cell cell, Direction direction, out int newRow, out int newCol)
         {
-            newRow = row;
-            newCol = col;
+            newRow = cell.Row;
+            newCol = cell.Col;
 
             if (direction == Direction.Up)
             {
@@ -84,40 +83,42 @@
             }
         }
 
-        private void ProcessDirection(Cell cell, Direction direction, Queue<Cell> cellsOrder, HashSet<Cell> visitedCells)
+        private bool IsPossibleDirection(/*Cell cell, Direction direction,*/int newRow, int newCol, /* Queue<Cell> cellsOrder,*/ HashSet<Cell> visitedCells)
         {
-            int newRow;
-            int newCol;
+            //int newRow;
+            //int newCol;
+            bool isPossibleDirection = true;
 
-            this.FindNewCellCoordinates(cell.Row, cell.Col, direction, out newRow, out newCol);
+            //this.FindNewCellCoordinates(cell.Row, cell.Col, direction, out newRow, out newCol);
 
             if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
             {
-                return;
+                isPossibleDirection = false;// return;
             }
 
             if (visitedCells.Contains(this.labyrinth[newRow, newCol]))
             {
-                return;
+                isPossibleDirection = false;// return;
             }
 
-            if (this.labyrinth[newRow, newCol].IsEmpty())
-            {
-                cellsOrder.Enqueue(this.labyrinth[newRow, newCol]);
-            }
+            //if (this.labyrinth[newRow, newCol].IsEmpty())
+            //{
+            //    cellsOrder.Enqueue(this.labyrinth[newRow, newCol]);
+            //}
 
+            return isPossibleDirection;
         }
 
-        private bool ExitFound(Cell cell)
+        private bool IsExitCell(Cell cell)
         {
-            bool exitFound = false;
+            bool isExitCell = false;
 
             if (cell.Row == labyrinthSize - 1 || cell.Col == labyrinthSize - 1 || cell.Row == 0 || cell.Col == 0)
             {
-                exitFound = true;
+                isExitCell = true;
             }
 
-            return exitFound;
+            return isExitCell;
         }
 
         private bool ExitPathExists()
@@ -126,13 +127,24 @@
             Cell startCell = this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol];
             cellsOrder.Enqueue(startCell);
             HashSet<Cell> visitedCells = new HashSet<Cell>();
-            List<Direction> directions = new List<Direction>(){Direction.Down,Direction.Up, Direction.Left,Direction.Right};
+            List<Direction> directions = new List<Direction>()
+            {
+                Direction.Down,
+                Direction.Up,
+                Direction.Left,
+                Direction.Right
+            };
             bool pathExists = false;
+            int newRow = 0;
+            int newCol = 0;
+            bool isPossibleCell = false;
+            Cell newCell = null;
+
             while (cellsOrder.Count > 0)
             {
                 Cell currentCell = cellsOrder.Dequeue();
                 visitedCells.Add(currentCell);
-                if (this.ExitFound(currentCell))
+                if (this.IsExitCell(currentCell))
                 {
                     pathExists = true;
                     break;
@@ -140,7 +152,13 @@
 
                 foreach (Direction direction in directions)
                 {
-                   this.ProcessDirection(currentCell, direction, cellsOrder, visitedCells);
+                    FindNewCellCoordinates(currentCell, direction, out newRow, out newCol);
+                    newCell = this.labyrinth[newRow, newCol];
+                    isPossibleCell = this.IsPossibleDirection(/*currentCell, direction, */newRow, newCol, /*cellsOrder,*/ visitedCells);
+                    if (isPossibleCell && newCell.IsEmpty())
+                    {
+                        cellsOrder.Enqueue(newCell);
+                    }
                 }
                 //this.Move(currentCell, Direction.Down, cellsOrder, visitedCells);
                 //this.Move(currentCell, Direction.Up, cellsOrder, visitedCells);
