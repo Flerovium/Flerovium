@@ -41,13 +41,13 @@ namespace Labyrinth
         {
             if (this.TopResults.Count == 0)
             {
-                string emptyMessage = "The scoreboard is empty!";
+                string emptyMessage = "\nThe scoreboard is empty!";
 
                 return emptyMessage;
             }
             else
             {
-                StringBuilder scoreBoard = new StringBuilder();
+                StringBuilder scoreBoard = new StringBuilder("\n");
                 Result currentResult = null;
 
                 for (int index = 0; index < topResults.Count; index++)

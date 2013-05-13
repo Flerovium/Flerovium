@@ -134,7 +134,7 @@ namespace Labyrinth {
         ///Use:
         ///- &apos;t&apos; to view the top scoreboard, 
         ///- &apos;r&apos; to start a new game
-        ///- &apos;e&apos; to qu.
+        ///- &apos;e&apos; to quit.
         /// </summary>
         internal static string Welcome {
             get {

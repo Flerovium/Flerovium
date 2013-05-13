@@ -117,37 +117,37 @@ namespace Labyrinth
             return isGameOver;
         }
 
-        private bool TryMove(string direction)
-        {
-            bool moveDone = false;
-            switch (direction)
-            {
-                case "u":
-                    moveDone =
-                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Up);
-                    break;
-                case "d":
-                    moveDone =
-                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Down);
-                    break;
-                case "l":
-                    moveDone =
-                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Left);
-                    break;
-                case "r":
-                    moveDone =
-                        labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Right);
-                    break;
-                default:
-                    Console.WriteLine(MenuMessages.InvalidMove);
-                    break;
-            }
-            if (moveDone == false)
-            {
-                Console.WriteLine(MenuMessages.InvalidMove);
-            }
-            return moveDone;
-        }
+        //private bool TryMove(string direction)
+        //{
+        //    bool moveDone = false;
+        //    switch (direction)
+        //    {
+        //        case "u":
+        //            moveDone =
+        //                labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Up);
+        //            break;
+        //        case "d":
+        //            moveDone =
+        //                labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Down);
+        //            break;
+        //        case "l":
+        //            moveDone =
+        //                labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Left);
+        //            break;
+        //        case "r":
+        //            moveDone =
+        //                labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Right);
+        //            break;
+        //        default:
+        //            Console.WriteLine(MenuMessages.InvalidMove);
+        //            break;
+        //    }
+        //    if (moveDone == false)
+        //    {
+        //        Console.WriteLine(MenuMessages.InvalidMove);
+        //    }
+        //    return moveDone;
+        //}
 
         //private void ProccessInput(string input, Labyrinth labyrinth, ref int movesCount, ScoreBoard ladder)
         //{
@@ -184,22 +184,22 @@ namespace Labyrinth
 
         internal void MoveLeft()
         {
-            this.labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Left);
+            this.labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Left);
         }
 
         internal void MoveRight()
         {
-            labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Right);
+            labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Right);
         }
 
         internal void MoveUp()
         {
-            labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Up);
+            labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Up);
         }
 
         internal void MoveDown()
         {
-            labyrinth.IsMovePossible(labyrinth.CurrentCell, Direction.Down);
+            labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Down);
         }
 
         internal void GameRestart()

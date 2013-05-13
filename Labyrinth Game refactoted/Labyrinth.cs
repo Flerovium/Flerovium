@@ -37,7 +37,7 @@
             return this.labyrinth[row, col];
         }
 
-        internal bool IsMovePossible(Cell cell, Direction direction)
+        internal void MakeMove(Cell cell, Direction direction)
         {
             int newRow;
             int newCol;
@@ -46,19 +46,19 @@
 
             if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
             {
-                return false;
+                return;// false;
             }
 
             if (!this.labyrinth[newRow, newCol].IsEmpty())
             {
-                return false;
+                return;// false;
             }
 
             this.labyrinth[newRow, newCol].Type = CellType.Player;
             this.labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
             this.CurrentCell = this.labyrinth[newRow, newCol];
 
-            return true;
+            //return true;
         }
 
         private void FindNewCellCoordinates(int row, int col, Direction direction, out int newRow, out int newCol)
@@ -84,7 +84,7 @@
             }
         }
 
-        private void Move(Cell cell, Direction direction, Queue<Cell> cellsOrder, HashSet<Cell> visitedCells)
+        private void ProcessDirection(Cell cell, Direction direction, Queue<Cell> cellsOrder, HashSet<Cell> visitedCells)
         {
             int newRow;
             int newCol;
@@ -105,6 +105,7 @@
             {
                 cellsOrder.Enqueue(this.labyrinth[newRow, newCol]);
             }
+
         }
 
         private bool ExitFound(Cell cell)
@@ -125,7 +126,7 @@
             Cell startCell = this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol];
             cellsOrder.Enqueue(startCell);
             HashSet<Cell> visitedCells = new HashSet<Cell>();
-
+            List<Direction> directions = new List<Direction>(){Direction.Down,Direction.Up, Direction.Left,Direction.Right};
             bool pathExists = false;
             while (cellsOrder.Count > 0)
             {
@@ -137,10 +138,14 @@
                     break;
                 }
 
-                this.Move(currentCell, Direction.Down, cellsOrder, visitedCells);
-                this.Move(currentCell, Direction.Up, cellsOrder, visitedCells);
-                this.Move(currentCell, Direction.Left, cellsOrder, visitedCells);
-                this.Move(currentCell, Direction.Right, cellsOrder, visitedCells);
+                foreach (Direction direction in directions)
+                {
+                   this.ProcessDirection(currentCell, direction, cellsOrder, visitedCells);
+                }
+                //this.Move(currentCell, Direction.Down, cellsOrder, visitedCells);
+                //this.Move(currentCell, Direction.Up, cellsOrder, visitedCells);
+                //this.Move(currentCell, Direction.Left, cellsOrder, visitedCells);
+                //this.Move(currentCell, Direction.Right, cellsOrder, visitedCells);
             }
 
             return pathExists;
