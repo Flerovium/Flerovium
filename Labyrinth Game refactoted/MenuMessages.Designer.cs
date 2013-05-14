@@ -98,7 +98,7 @@ namespace Labyrinth {
         
         /// <summary>
         ///   Looks up a localized string similar to 
-        ///Good Bye!.
+        ///Goodbye!.
         /// </summary>
         internal static string Goodbye {
             get {

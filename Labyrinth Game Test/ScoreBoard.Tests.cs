@@ -98,11 +98,8 @@ namespace Labyrinth_Game_Test
             scoreboard.AddResult(4, "Player" + 4);
             scoreboard.AddResult(7, "Player" + 7);
             string actual = scoreboard.ToString();
-            string expected = "\n1. Player2 --> 2 moves\n"+
-                              "2. Player4 --> 4 moves\n"+
-                              "3. Player5 --> 5 moves\n"+
-                              "4. Player6 --> 6 moves\n"+
-                              "5. Player7 --> 7 moves\n";
+            string expected = "\n1. Player2 --> 2 moves\r\n2. Player4 --> 4 moves" +
+                "\r\n3. Player5 --> 5 moves\r\n4. Player6 --> 6 moves\r\n5. Player7 --> 7 moves\r\n";
 
             Assert.AreEqual(expected, actual);
         }
