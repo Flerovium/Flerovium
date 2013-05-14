@@ -11,5 +11,6 @@ namespace Labyrinth
         void PrintEndOrNewGame();
         void PrintGoodbyeMessage();
         void PrintMovesCountMessage(int moves);
+        void PrintInvalidCommandMessage();
     }
 }

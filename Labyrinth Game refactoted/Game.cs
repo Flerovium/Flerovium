@@ -84,7 +84,7 @@ namespace Labyrinth
             this.drawer = new ConsoleDrawer();
         }
         
-        public void RunGame()
+        public void Run()
         {
             this.Drawer.PrintWelcomeMessage();
             int movesCount = 0;
@@ -92,9 +92,15 @@ namespace Labyrinth
             while (!IsGameOver())
             {
                 this.Drawer.Draw(this.Labyrinth);
-                this.keyboard.ProcessInput(this.Moves, out movesCount);
-                this.Moves = movesCount;
-                //Console.Clear();
+                try
+                {
+                    this.keyboard.ProcessInput(this.Moves, out movesCount);
+                    this.Moves = movesCount;
+                }
+                catch (ArgumentException)
+                {
+                    this.Drawer.PrintInvalidCommandMessage();
+                }
             }
             
             this.Drawer.Draw(this.Labyrinth);
@@ -114,11 +120,11 @@ namespace Labyrinth
         private bool IsGameOver()
         {
             bool isGameOver = false;
-            int currentRow = this.labyrinth.CurrentCell.Row;
-            int currentCol = this.labyrinth.CurrentCell.Col;
-            
-            if (currentRow == 0 || currentCol == 0 || currentRow == this.labyrinth.labyrinthSize - 1 ||
-                currentCol == this.labyrinth.labyrinthSize - 1)
+            int currentRow = this.Labyrinth.CurrentCell.Row;
+            int currentCol = this.Labyrinth.CurrentCell.Col;
+
+            if (currentRow == 0 || currentCol == 0 || currentRow == this.Labyrinth.labyrinthSize - 1 ||
+                currentCol == this.Labyrinth.labyrinthSize - 1)
             {
                 isGameOver = true;
             }
@@ -126,42 +132,42 @@ namespace Labyrinth
             return isGameOver;
         }
         
-        internal void MoveLeft()
+        public void MoveLeft()
         {
-            this.labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Left);
+            this.Labyrinth.MakeMove(this.Labyrinth.CurrentCell, Direction.Left);
         }
-        
-        internal void MoveRight()
+
+        public void MoveRight()
         {
-            labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Right);
+            this.Labyrinth.MakeMove(this.Labyrinth.CurrentCell, Direction.Right);
         }
-        
-        internal void MoveUp()
+
+        public void MoveUp()
         {
-            labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Up);
+            this.Labyrinth.MakeMove(this.Labyrinth.CurrentCell, Direction.Up);
         }
-        
-        internal void MoveDown()
+
+        public void MoveDown()
         {
-            labyrinth.MakeMove(labyrinth.CurrentCell, Direction.Down);
+            this.Labyrinth.MakeMove(this.Labyrinth.CurrentCell, Direction.Down);
         }
-        
-        internal void GameRestart()
+
+        public void GameRestart()
         {
-            this.labyrinth = new Playfield();
+            this.Labyrinth = new Playfield();
             this.Moves = 0;
-            this.RunGame();
+            this.Run();
         }
-        
-        internal void Exit()
+
+        public void Exit()
         {
             this.Drawer.PrintGoodbyeMessage();
             Environment.Exit(0);
         }
-        
-        internal void ShowTopScore()
+
+        public void ShowTopScores()
         {
-            this.Drawer.Draw(this.Scoreboard.ToString());
+            this.Drawer.Draw(this.Scoreboard);
         }
     }
 }

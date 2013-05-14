@@ -120,7 +120,7 @@ namespace Labyrinth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid move! Please use the following command: l=left, r-right, u=up, d=down:.
+        ///   Looks up a localized string similar to Invalid move! Please use the following command: Left arrow=left, Right arrow-right, Up arrow=up, Down arrow=down:.
         /// </summary>
         internal static string InvalidMove {
             get {

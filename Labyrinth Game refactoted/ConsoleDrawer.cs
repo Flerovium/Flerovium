@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Labyrinth
 {
-    public class ConsoleDrawer:IDrawerInterface
+    public class ConsoleDrawer : IDrawerInterface
     {
         public void PrintWelcomeMessage()
         {
@@ -17,6 +15,12 @@ namespace Labyrinth
         {
             Console.WriteLine();
             Console.WriteLine(MenuMessages.Goodbye);
+        }
+
+        public void PrintInvalidCommandMessage()
+        {
+            Console.WriteLine();
+            Console.WriteLine(MenuMessages.InvalidCommand);
         }
 
         public void PrintMovesCountMessage(int moves)

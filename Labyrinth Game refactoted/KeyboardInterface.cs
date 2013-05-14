@@ -65,7 +65,7 @@ namespace Labyrinth
             }
             else
             {
-                Console.WriteLine(MenuMessages.InvalidCommand);
+                throw new ArgumentException();
             }
         }
 

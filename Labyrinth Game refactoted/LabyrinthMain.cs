@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Labyrinth
 {
-    class LabyrinthMain
+    public class LabyrinthMain
     {
         const int TOP_RESULTS_CAPACITY = 5;
 
@@ -45,10 +43,10 @@ namespace Labyrinth
 
             game.Keyboard.OnTopScorePressed += (sender, eventInfo) =>
             {
-                game.ShowTopScore();
+                game.ShowTopScores();
             };
 
-            game.RunGame();
+            game.Run();
         }
     }
 }

@@ -141,7 +141,7 @@ Use:
 - the arrows for the directions</value>
   </data>
   <data name="InvalidMove" xml:space="preserve">
-    <value>Invalid move! Please use the following command: l=left, r-right, u=up, d=down:</value>
+    <value>Invalid move! Please use the following command: Left arrow=left, Right arrow-right, Up arrow=up, Down arrow=down:</value>
   </data>
   <data name="ShowMovesCount" xml:space="preserve">
     <value>Congratulations! You escaped in {0} moves.</value>
@@ -152,6 +152,6 @@ The '*' is the player, the '#' are the walls of labyrinth. You should try to go 
 Use:
 - 't' to view the top scoreboard, 
 - 'r' to start a new game
-- 'e' to qu</value>
+- 'e' to quit</value>
   </data>
 </root>

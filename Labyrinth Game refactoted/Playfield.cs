@@ -19,6 +19,18 @@ namespace Labyrinth
             this.CurrentCell = this.labyrinth[this.labyrintStartRow, this.labyrintStartRow];
         }
 
+        public Cell[,] Labyrinth
+        {
+            get
+            {
+                return this.labyrinth;
+            }
+            set
+            {
+                this.labyrinth = value;
+            }
+        }
+
         public Cell CurrentCell 
         {
             get
@@ -34,7 +46,7 @@ namespace Labyrinth
 
         public Cell GetCell(int row, int col)
         {
-            return this.labyrinth[row, col];
+            return this.Labyrinth[row, col];
         }
 
         public void MakeMove(Cell cell, Direction direction)
@@ -44,19 +56,19 @@ namespace Labyrinth
 
             this.FindNewCellCoordinates(cell, direction, out newRow, out newCol);
 
-            if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
+            if (newRow < 0 || newCol < 0 || newRow >= this.Labyrinth.GetLength(0) || newCol >= this.Labyrinth.GetLength(1))
             {
                 return;
             }
 
-            if (!this.labyrinth[newRow, newCol].IsEmpty())
+            if (!this.Labyrinth[newRow, newCol].IsEmpty())
             {
                 return;
             }
 
-            this.labyrinth[newRow, newCol].Type = CellType.Player;
-            this.labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
-            this.CurrentCell = this.labyrinth[newRow, newCol];
+            this.Labyrinth[newRow, newCol].Type = CellType.Player;
+            this.Labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
+            this.CurrentCell = this.Labyrinth[newRow, newCol];
         }
 
         public void FindNewCellCoordinates(Cell cell, Direction direction, out int newRow, out int newCol)
@@ -86,12 +98,12 @@ namespace Labyrinth
         {
             bool isPossibleDirection = true;
 
-            if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
+            if (newRow < 0 || newCol < 0 || newRow >= this.Labyrinth.GetLength(0) || newCol >= this.Labyrinth.GetLength(1))
             {
                 isPossibleDirection = false;
             }
 
-            if (visitedCells.Contains(this.labyrinth[newRow, newCol]))
+            if (visitedCells.Contains(this.Labyrinth[newRow, newCol]))
             {
                 isPossibleDirection = false;
             }
@@ -114,7 +126,7 @@ namespace Labyrinth
         public bool ExitPathExists()
         {
             Queue<Cell> cellsOrder = new Queue<Cell>();
-            Cell startCell = this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol];
+            Cell startCell = this.Labyrinth[this.labyrintStartRow, this.labyrinthStartCol];
             cellsOrder.Enqueue(startCell);
             HashSet<Cell> visitedCells = new HashSet<Cell>();
             List<Direction> directions = new List<Direction>()
@@ -143,7 +155,7 @@ namespace Labyrinth
                 foreach (Direction direction in directions)
                 {
                     FindNewCellCoordinates(currentCell, direction, out newRow, out newCol);
-                    newCell = this.labyrinth[newRow, newCol];
+                    newCell = this.Labyrinth[newRow, newCol];
                     isPossibleCell = this.IsPossibleDirection(newRow, newCol, visitedCells);
                     if (isPossibleCell && newCell.IsEmpty())
                     {
@@ -177,11 +189,11 @@ namespace Labyrinth
                         charValue = CellType.Wall;
                     }
 
-                    this.labyrinth[row, col] = new Cell(row, col, charValue);
+                    this.Labyrinth[row, col] = new Cell(row, col, charValue);
                 }
             }
 
-            this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol].Type = CellType.Player;
+            this.Labyrinth[this.labyrintStartRow, this.labyrinthStartCol].Type = CellType.Player;
             bool exitPathExists = this.ExitPathExists();
 
             if (!exitPathExists)

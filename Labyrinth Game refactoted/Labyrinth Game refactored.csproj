@@ -55,7 +55,6 @@
     <Compile Include="CellType.cs" />
     <Compile Include="Direction.cs" />
     <Compile Include="Game.cs" />
-    <Compile Include="IDrawable.cs" />
     <Compile Include="IDrawerInterface.cs" />
     <Compile Include="IUserInterface.cs" />
     <Compile Include="LabyrinthMain.cs" />
