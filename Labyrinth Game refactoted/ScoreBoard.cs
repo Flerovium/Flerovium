@@ -39,11 +39,11 @@ namespace Labyrinth
 
         public override string ToString()
         {
+            string scoreBoardInfo = null;
+
             if (this.TopResults.Count == 0)
             {
-                string emptyMessage = "\nThe scoreboard is empty!";
-
-                return emptyMessage;
+                scoreBoardInfo = "\nThe scoreboard is empty!";
             }
             else
             {
@@ -57,23 +57,26 @@ namespace Labyrinth
                         currentResult.PlayerName, currentResult.MovesCount));
                 }
 
-                return scoreBoard.ToString();
+                scoreBoardInfo = scoreBoard.ToString();
             }
+
+            return scoreBoardInfo;
         }
 
         public bool IsInScoreboard(int result)
         {
+            bool isInScoreboard = false;
+
             if (topResults.Count < this.topResults.Capacity)
             {
-                return true;
+                isInScoreboard = true;
             }
-
-            if (result < topResults.Max().MovesCount)
+            else if (result < topResults.Max().MovesCount)
             {
-                return true;
+                isInScoreboard = true;
             }
 
-            return false;
+            return isInScoreboard;
         }
 
         public void AddResult(int movesCount, string playerName)
