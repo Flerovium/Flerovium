@@ -129,12 +129,21 @@ namespace Labyrinth {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Congratulations! You escaped in {0} moves..
+        /// </summary>
+        internal static string ShowMovesCount {
+            get {
+                return ResourceManager.GetString("ShowMovesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Welcome to “Labirinth” game! You should try to escape from it.
         ///The &apos;*&apos; is the player, the &apos;#&apos; are the walls of labyrinth. You should try to go through the &apos;-&apos; to some of the ends of the labyrinth.
         ///Use:
         ///- &apos;t&apos; to view the top scoreboard, 
         ///- &apos;r&apos; to start a new game
-        ///- &apos;e&apos; to quit.
+        ///- &apos;e&apos; to qu.
         /// </summary>
         internal static string Welcome {
             get {

@@ -83,12 +83,14 @@ namespace Labyrinth
                 this.keyboard.ProcessInput(this.Moves, out movesCount);
                 this.Moves = movesCount;
                 //ProccessInput(input, this.labyrinth, ref movesCount, scoreboard);
+                Console.Clear();
             }
 
             //if (input != "restart")
             //{
             Drawer.Draw(this.Labyrinth);
-                Console.WriteLine("Congratulations! You escaped in {0} moves.", this.Moves);
+                //Console.WriteLine("Congratulations! You escaped in {0} moves.", this.Moves);
+                Console.WriteLine(string.Format(MenuMessages.ShowMovesCount, this.Moves));
                 if (scoreboard.IsInScoreboard(this.Moves))
                 {
                     Console.WriteLine(MenuMessages.EnterPlayerName);

@@ -143,6 +143,9 @@ Use:
   <data name="InvalidMove" xml:space="preserve">
     <value>Invalid move! Please use the following command: l=left, r-right, u=up, d=down:</value>
   </data>
+  <data name="ShowMovesCount" xml:space="preserve">
+    <value>Congratulations! You escaped in {0} moves.</value>
+  </data>
   <data name="Welcome" xml:space="preserve">
     <value>Welcome to “Labirinth” game! You should try to escape from it.
 The '*' is the player, the '#' are the walls of labyrinth. You should try to go through the '-' to some of the ends of the labyrinth.
