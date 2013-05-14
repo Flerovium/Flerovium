@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Labyrinth
 {
-    public class Result: IComparable<Result>
+    public class Result : IComparable<Result>
     {
-        private int movesCount; 
-        private string playerName;
+        private readonly int movesCount; 
+        private readonly string playerName;
 
         public Result(int movesCount, string playerName)
         {

@@ -5,11 +5,10 @@ using System.Text;
 
 namespace Labyrinth
 {
-
-    // smilih se nad vas kolegi, ne sym puskal obfuskatora, shtoto se zamislih, che i vie moze da imate
     class LabyrinthMain
     {
         const int TOP_RESULTS_CAPACITY = 5;
+
         static void Main()
         {
             Game game = new Game(TOP_RESULTS_CAPACITY);
@@ -18,7 +17,7 @@ namespace Labyrinth
             {
                 game.MoveLeft();
             };
-
+            
             game.Keyboard.OnRightPressed += (sender, eventInfo) =>
             {
                 game.MoveRight();
@@ -50,7 +49,6 @@ namespace Labyrinth
             };
 
             game.RunGame();
-
         }
     }
 }

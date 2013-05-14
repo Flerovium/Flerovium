@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Labyrinth
 {
@@ -11,8 +9,7 @@ namespace Labyrinth
         {
             currentMoves = moves;
             var keyInfo = Console.ReadKey();
-            // if (Console.KeyAvailable)
-            //{
+            
             if (keyInfo.Key.Equals(ConsoleKey.LeftArrow))
             {
                 if (this.OnLeftPressed != null)
@@ -70,7 +67,11 @@ namespace Labyrinth
             {
                 Console.WriteLine(MenuMessages.InvalidCommand);
             }
-            // }
+        }
+
+        public string ReadPlayerName()
+        {
+            return Console.ReadLine();
         }
 
         public event EventHandler OnLeftPressed;

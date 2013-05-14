@@ -20,5 +20,7 @@ namespace Labyrinth
         event EventHandler OnTopScorePressed;
 
         void ProcessInput(int inParam, out int outParam);
+
+        string ReadPlayerName();
     }
 }

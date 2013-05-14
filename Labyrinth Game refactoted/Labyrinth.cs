@@ -1,10 +1,10 @@
-﻿namespace Labyrinth
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
+namespace Labyrinth
+{
     public class Labyrinth
     {
         public readonly int labyrinthSize = 7;
@@ -42,22 +42,21 @@
             int newRow;
             int newCol;
 
-            this.FindNewCellCoordinates(cell/*.Row, cell.Col*/, direction, out newRow, out newCol);
+            this.FindNewCellCoordinates(cell, direction, out newRow, out newCol);
 
             if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
             {
-                return;// false;
+                return;
             }
 
             if (!this.labyrinth[newRow, newCol].IsEmpty())
             {
-                return;// false;
+                return;
             }
 
             this.labyrinth[newRow, newCol].Type = CellType.Player;
             this.labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
             this.CurrentCell = this.labyrinth[newRow, newCol];
-            //return true;
         }
 
         private void FindNewCellCoordinates(Cell cell, Direction direction, out int newRow, out int newCol)
@@ -83,28 +82,19 @@
             }
         }
 
-        private bool IsPossibleDirection(/*Cell cell, Direction direction,*/int newRow, int newCol, /* Queue<Cell> cellsOrder,*/ HashSet<Cell> visitedCells)
+        private bool IsPossibleDirection(int newRow, int newCol, HashSet<Cell> visitedCells)
         {
-            //int newRow;
-            //int newCol;
             bool isPossibleDirection = true;
-
-            //this.FindNewCellCoordinates(cell.Row, cell.Col, direction, out newRow, out newCol);
 
             if (newRow < 0 || newCol < 0 || newRow >= this.labyrinth.GetLength(0) || newCol >= this.labyrinth.GetLength(1))
             {
-                isPossibleDirection = false;// return;
+                isPossibleDirection = false;
             }
 
             if (visitedCells.Contains(this.labyrinth[newRow, newCol]))
             {
-                isPossibleDirection = false;// return;
+                isPossibleDirection = false;
             }
-
-            //if (this.labyrinth[newRow, newCol].IsEmpty())
-            //{
-            //    cellsOrder.Enqueue(this.labyrinth[newRow, newCol]);
-            //}
 
             return isPossibleDirection;
         }
@@ -154,16 +144,12 @@
                 {
                     FindNewCellCoordinates(currentCell, direction, out newRow, out newCol);
                     newCell = this.labyrinth[newRow, newCol];
-                    isPossibleCell = this.IsPossibleDirection(/*currentCell, direction, */newRow, newCol, /*cellsOrder,*/ visitedCells);
+                    isPossibleCell = this.IsPossibleDirection(newRow, newCol, visitedCells);
                     if (isPossibleCell && newCell.IsEmpty())
                     {
                         cellsOrder.Enqueue(newCell);
                     }
                 }
-                //this.Move(currentCell, Direction.Down, cellsOrder, visitedCells);
-                //this.Move(currentCell, Direction.Up, cellsOrder, visitedCells);
-                //this.Move(currentCell, Direction.Left, cellsOrder, visitedCells);
-                //this.Move(currentCell, Direction.Right, cellsOrder, visitedCells);
             }
 
             return pathExists;
@@ -171,7 +157,7 @@
 
         private void GenerateLabyrinth()
         {
-            Random rand = new Random();
+            Random randomGenerator = new Random();
 
             this.labyrinth = new Cell[labyrinthSize, labyrinthSize];
 
@@ -179,8 +165,7 @@
             {
                 for (int col = 0; col < labyrinthSize; col++)
                 {
-                    int cellRandomValue = rand.Next(0, 2);
-
+                    int cellRandomValue = randomGenerator.Next(0, 2);
                     CellType charValue;
 
                     if (cellRandomValue == 0)
@@ -197,7 +182,6 @@
             }
 
             this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol].Type = CellType.Player;
-
             bool exitPathExists = this.ExitPathExists();
 
             if (!exitPathExists)
@@ -210,16 +194,18 @@
         {
             StringBuilder buildLabyrint = new StringBuilder();
             int labyrinthSize = this.labyrinthSize;
+
             for (int row = 0; row < labyrinthSize; row++)
             {
                 for (int col = 0; col < labyrinthSize; col++)
                 {
                     Cell cell = this.GetCell(row, col);
                     buildLabyrint.AppendFormat("{0} ", cell.ToString());
-                    //Console.Write(cell.ToString() + " ");
                 }
+                
                 buildLabyrint.AppendFormat("\n");
             }
+
             return buildLabyrint.ToString();
         }
     }
