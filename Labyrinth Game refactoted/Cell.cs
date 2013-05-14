@@ -13,14 +13,14 @@ namespace Labyrinth
         {
             this.Row = row;
             this.Col = col;
-            this.type = CellType.Empty;
+            this.Type = CellType.Empty;
         }
 
         public Cell(int row, int col, CellType type) 
         {
             this.Row = row;
             this.Col = col;
-            this.type = type;
+            this.Type = type;
         }
         
         public int Row
@@ -71,12 +71,14 @@ namespace Labyrinth
 
         public bool IsEmpty()
         {
+            bool isEmpty = false;
+
             if (this.Type == CellType.Empty)
             {
-                return true;
+                isEmpty = true;
             }
 
-            return false;
+            return isEmpty;
         }
 
         public override string ToString()
@@ -86,18 +88,16 @@ namespace Labyrinth
             if (this.Type == CellType.Wall)
             {
                 cellSymbol = "#";
-
-                return cellSymbol;
             }
-            else if (this.type == CellType.Player)
+            else if (this.Type == CellType.Player)
             {
                 cellSymbol = "*";
-
-                return cellSymbol;
             }
-
-            cellSymbol = "-";
-
+            else
+            {
+                cellSymbol = "-";
+            }
+            
             return cellSymbol;
         }
     }
