@@ -97,7 +97,8 @@ namespace Labyrinth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Good Bye!.
+        ///   Looks up a localized string similar to 
+        ///Good Bye!.
         /// </summary>
         internal static string Goodbye {
             get {
@@ -106,7 +107,8 @@ namespace Labyrinth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid command! 
+        ///   Looks up a localized string similar to 
+        ///Invalid command! 
         ///Use:	
         ///- &apos;t&apos; to view the top scoreboard,	
         ///- &apos;r&apos; to start a new game	
@@ -120,16 +122,18 @@ namespace Labyrinth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Invalid move! Please use the following command: Left arrow=left, Right arrow-right, Up arrow=up, Down arrow=down:.
+        ///   Looks up a localized string similar to {0}. {1} --&gt; {2} moves
+        ///.
         /// </summary>
-        internal static string InvalidMove {
+        internal static string PlayerResult {
             get {
-                return ResourceManager.GetString("InvalidMove", resourceCulture);
+                return ResourceManager.GetString("PlayerResult", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Congratulations! You escaped in {0} moves..
+        ///   Looks up a localized string similar to 
+        ///Congratulations! You escaped in {0} moves..
         /// </summary>
         internal static string ShowMovesCount {
             get {
@@ -138,7 +142,8 @@ namespace Labyrinth {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Welcome to “Labirinth” game! You should try to escape from it.
+        ///   Looks up a localized string similar to 
+        ///Welcome to “Labirinth” game! You should try to escape from it.
         ///The &apos;*&apos; is the player, the &apos;#&apos; are the walls of labyrinth. You should try to go through the &apos;-&apos; to some of the ends of the labyrinth.
         ///Use:
         ///- &apos;t&apos; to view the top scoreboard, 

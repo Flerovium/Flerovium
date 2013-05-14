@@ -50,10 +50,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="CellTest.cs" />
+    <Compile Include="Cell.Tests.cs" />
+    <Compile Include="Playfield.Tests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreBoardTest.cs" />
-    <Compile Include="PlayfieldTest.cs" />
+    <Compile Include="ScoreBoard.Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Labyrinth Game refactoted\Labyrinth Game refactored.csproj">

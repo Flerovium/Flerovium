@@ -130,24 +130,29 @@
     <value>Please enter your name for the top scoreboard:</value>
   </data>
   <data name="Goodbye" xml:space="preserve">
-    <value>Good Bye!</value>
+    <value>
+Good Bye!</value>
   </data>
   <data name="InvalidCommand" xml:space="preserve">
-    <value>Invalid command! 
+    <value>
+Invalid command! 
 Use:	
 - 't' to view the top scoreboard,	
 - 'r' to start a new game	
 - 'e' to quit the game.	
 - the arrows for the directions</value>
   </data>
-  <data name="InvalidMove" xml:space="preserve">
-    <value>Invalid move! Please use the following command: Left arrow=left, Right arrow-right, Up arrow=up, Down arrow=down:</value>
+  <data name="PlayerResult" xml:space="preserve">
+    <value>{0}. {1} --&gt; {2} moves
+</value>
   </data>
   <data name="ShowMovesCount" xml:space="preserve">
-    <value>Congratulations! You escaped in {0} moves.</value>
+    <value>
+Congratulations! You escaped in {0} moves.</value>
   </data>
   <data name="Welcome" xml:space="preserve">
-    <value>Welcome to “Labirinth” game! You should try to escape from it.
+    <value>
+Welcome to “Labirinth” game! You should try to escape from it.
 The '*' is the player, the '#' are the walls of labyrinth. You should try to go through the '-' to some of the ends of the labyrinth.
 Use:
 - 't' to view the top scoreboard, 
