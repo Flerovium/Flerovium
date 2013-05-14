@@ -53,22 +53,15 @@ namespace Labyrinth
         {
             int newRow;
             int newCol;
-
             this.FindNewCellCoordinates(cell, direction, out newRow, out newCol);
 
-            if (newRow < 0 || newCol < 0 || newRow >= this.Labyrinth.GetLength(0) || newCol >= this.Labyrinth.GetLength(1))
+            if (newRow >= 0 && newCol >= 0 && newRow < this.Labyrinth.GetLength(0) && newCol < this.Labyrinth.GetLength(1) &&
+                this.Labyrinth[newRow, newCol].IsEmpty())
             {
-                return;
+                this.Labyrinth[newRow, newCol].Type = CellType.Player;
+                this.Labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
+                this.CurrentCell = this.Labyrinth[newRow, newCol];
             }
-
-            if (!this.Labyrinth[newRow, newCol].IsEmpty())
-            {
-                return;
-            }
-
-            this.Labyrinth[newRow, newCol].Type = CellType.Player;
-            this.Labyrinth[cell.Row, cell.Col].Type = CellType.Empty;
-            this.CurrentCell = this.Labyrinth[newRow, newCol];
         }
 
         public void FindNewCellCoordinates(Cell cell, Direction direction, out int newRow, out int newCol)
