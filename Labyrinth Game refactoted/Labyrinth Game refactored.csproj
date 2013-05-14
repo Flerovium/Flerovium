@@ -59,7 +59,7 @@
     <Compile Include="IDrawerInterface.cs" />
     <Compile Include="IUserInterface.cs" />
     <Compile Include="LabyrinthMain.cs" />
-    <Compile Include="Labyrinth.cs" />
+    <Compile Include="Playfield.cs" />
     <Compile Include="MenuMessages.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -5,7 +5,7 @@ namespace Labyrinth
 {
     public class Game
     {
-        private Labyrinth labyrinth;
+        private Playfield labyrinth;
         private ScoreBoard scoreboard;
         private IUserInterface keyboard;
         private IDrawerInterface drawer;
@@ -37,7 +37,7 @@ namespace Labyrinth
             }
         }
         
-        public Labyrinth Labyrinth
+        public Playfield Labyrinth
         {
             get
             {
@@ -77,7 +77,7 @@ namespace Labyrinth
         
         public Game(int scoreboardSize)
         {
-            this.labyrinth = new Labyrinth();
+            this.labyrinth = new Playfield();
             this.scoreboard = new ScoreBoard(scoreboardSize);
             this.keyboard = new KeyboardInterface();
             this.moves = 0;
@@ -148,7 +148,7 @@ namespace Labyrinth
         
         internal void GameRestart()
         {
-            this.labyrinth = new Labyrinth();
+            this.labyrinth = new Playfield();
             this.Moves = 0;
             this.RunGame();
         }

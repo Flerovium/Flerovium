@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Labyrinth
 {
-    public class Labyrinth
+    public class Playfield
     {
         public readonly int labyrinthSize = 7;
         private readonly int labyrintStartRow = 3;
@@ -13,13 +13,13 @@ namespace Labyrinth
         private Cell currentCell;
         private Cell[,] labyrinth;
 
-        public Labyrinth()
+        public Playfield()
         {
             this.GenerateLabyrinth();
             this.CurrentCell = this.labyrinth[this.labyrintStartRow, this.labyrintStartRow];
         }
 
-        internal Cell CurrentCell 
+        public Cell CurrentCell 
         {
             get
             {
@@ -32,12 +32,12 @@ namespace Labyrinth
             }
         }
 
-        internal Cell GetCell(int row, int col)
+        public Cell GetCell(int row, int col)
         {
             return this.labyrinth[row, col];
         }
 
-        internal void MakeMove(Cell cell, Direction direction)
+        public void MakeMove(Cell cell, Direction direction)
         {
             int newRow;
             int newCol;
@@ -59,7 +59,7 @@ namespace Labyrinth
             this.CurrentCell = this.labyrinth[newRow, newCol];
         }
 
-        private void FindNewCellCoordinates(Cell cell, Direction direction, out int newRow, out int newCol)
+        public void FindNewCellCoordinates(Cell cell, Direction direction, out int newRow, out int newCol)
         {
             newRow = cell.Row;
             newCol = cell.Col;
@@ -82,7 +82,7 @@ namespace Labyrinth
             }
         }
 
-        private bool IsPossibleDirection(int newRow, int newCol, HashSet<Cell> visitedCells)
+        public bool IsPossibleDirection(int newRow, int newCol, HashSet<Cell> visitedCells)
         {
             bool isPossibleDirection = true;
 
@@ -99,7 +99,7 @@ namespace Labyrinth
             return isPossibleDirection;
         }
 
-        private bool IsExitCell(Cell cell)
+        public bool IsExitCell(Cell cell)
         {
             bool isExitCell = false;
 
@@ -111,7 +111,7 @@ namespace Labyrinth
             return isExitCell;
         }
 
-        private bool ExitPathExists()
+        public bool ExitPathExists()
         {
             Queue<Cell> cellsOrder = new Queue<Cell>();
             Cell startCell = this.labyrinth[this.labyrintStartRow, this.labyrinthStartCol];
@@ -155,7 +155,7 @@ namespace Labyrinth
             return pathExists;
         }
 
-        private void GenerateLabyrinth()
+        public void GenerateLabyrinth()
         {
             Random randomGenerator = new Random();
 
