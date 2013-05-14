@@ -8,8 +8,8 @@ namespace Labyrinth
     public class Playfield
     {
         public readonly int labyrinthSize = 7;
-        private readonly int labyrintStartRow = 3;
-        private readonly int labyrinthStartCol = 3;
+        public readonly int labyrintStartRow = 3;
+        public readonly int labyrinthStartCol = 3;
         private Cell currentCell;
         private Cell[,] labyrinth;
 
