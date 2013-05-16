@@ -109,5 +109,41 @@ namespace Labyrinth_Game_Test
             string actual = stringWriter.ToString();
             Assert.AreEqual(expected, actual);
         }
+
+        [TestMethod]
+        public void DrawTest()
+        {
+            ConsoleDrawer drawer = new ConsoleDrawer();
+            Playfield testPlayfield = new Playfield();
+
+            for (int i = 0; i < testPlayfield.labyrinthSize; i++)
+            {
+                for (int j = 0; j < testPlayfield.labyrinthSize; j++)
+                {
+                    if (((i == 3) && (j == 3)))
+                    {
+                        testPlayfield.Labyrinth[i, j] = new Cell(i, j, CellType.Player);
+                    }
+                    else if (((i % 7 == 0) && (j % 7 == 0)))
+                    {
+                        testPlayfield.Labyrinth[i, j] = new Cell(i, j, CellType.Wall);
+                    }
+                    else
+                    {
+                        testPlayfield.Labyrinth[i, j] = new Cell(i, j, CellType.Empty);
+                    }
+                }
+            }
+
+            string expected = "\r\n" + testPlayfield.ToString();
+
+            StringWriter stringWriter = new StringWriter();
+            TextWriter originalOutput = Console.Out;
+            Console.SetOut(stringWriter);
+            drawer.Draw(testPlayfield);
+
+            string actual = stringWriter.ToString();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

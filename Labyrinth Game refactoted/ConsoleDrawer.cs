@@ -38,7 +38,7 @@ namespace Labyrinth
         public void Draw(object obj)
         {
             Console.WriteLine();
-            Console.WriteLine(obj.ToString());
+            Console.Write(obj.ToString());
         }
     }
 }

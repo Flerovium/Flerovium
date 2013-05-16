@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreBoard.Tests.cs" />
     <Compile Include="ConsoleDrawer.Tests.cs" />
+    <Compile Include="KeyboardInterface.Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Labyrinth Game refactoted\Labyrinth Game refactored.csproj">

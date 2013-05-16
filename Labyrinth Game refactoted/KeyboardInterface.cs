@@ -7,8 +7,12 @@ namespace Labyrinth
     {
         public void ProcessInput(int moves, out int currentMoves)
         {
+            ProcessInput(moves, out currentMoves, Console.ReadKey());
+        }
+
+        public void ProcessInput(int moves, out int currentMoves, ConsoleKeyInfo keyInfo)
+        {
             currentMoves = moves;
-            var keyInfo = Console.ReadKey();
             
             if (keyInfo.Key.Equals(ConsoleKey.LeftArrow))
             {
