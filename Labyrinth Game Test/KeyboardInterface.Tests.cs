@@ -64,7 +64,7 @@ namespace Labyrinth_Game_Test
         }
 
         [TestMethod]
-        public void ProcessInputOnRestartArrowTest()
+        public void ProcessInputOnRestartTest()
         {
             int currentMoves = 0;
             KeyboardInterface keyboardReader = new KeyboardInterface();
@@ -77,7 +77,7 @@ namespace Labyrinth_Game_Test
         }
 
         [TestMethod]
-        public void ProcessInputOnTopScoreArrowTest()
+        public void ProcessInputOnTopScoreTest()
         {
             int currentMoves = 0;
             KeyboardInterface keyboardReader = new KeyboardInterface();
@@ -89,7 +89,7 @@ namespace Labyrinth_Game_Test
             Assert.AreEqual(true, passed);
         }
         [TestMethod]
-        public void ProcessInputOnExitArrowTest()
+        public void ProcessInputOnExitTest()
         {
             int currentMoves = 0;
             KeyboardInterface keyboardReader = new KeyboardInterface();
