@@ -56,6 +56,7 @@
     <Compile Include="ScoreBoard.Tests.cs" />
     <Compile Include="ConsoleDrawer.Tests.cs" />
     <Compile Include="KeyboardInterface.Tests.cs" />
+    <Compile Include="Game.Tests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Labyrinth Game refactoted\Labyrinth Game refactored.csproj">
