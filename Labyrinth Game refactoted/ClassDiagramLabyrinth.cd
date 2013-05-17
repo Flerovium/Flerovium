@@ -16,14 +16,14 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Labyrinth.Game">
-    <Position X="8" Y="0.5" Width="1.5" />
+    <Position X="8.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>IAkAAAAYAAAAAQAAAAEAAIAAQQCAAEEIYAAAAACAAAI=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Labyrinth.KeyboardInterface" BaseTypeListCollapsed="true">
-    <Position X="2.25" Y="0.5" Width="2" />
+    <Position X="2.25" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQAAAAAAAAEAAEAAAAEAxAIAAAAAAAAAACAA=</HashCode>
       <FileName>KeyboardInterface.cs</FileName>
@@ -31,7 +31,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Labyrinth.LabyrinthMain">
-    <Position X="9.75" Y="0.5" Width="2" />
+    <Position X="10" Y="0.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>LabyrinthMain.cs</FileName>
@@ -51,7 +51,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Labyrinth.Result" BaseTypeListCollapsed="true">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="4.75" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAAQAAAEAAAAAAAAAAAAAAEAAAABAAAA=</HashCode>
       <FileName>Result.cs</FileName>
@@ -59,7 +59,7 @@
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
   <Class Name="Labyrinth.ScoreBoard">
-    <Position X="6.25" Y="0.5" Width="1.5" />
+    <Position X="6.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAQAAAAAAAAAAAEAAAAAAAIgAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>ScoreBoard.cs</FileName>

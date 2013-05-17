@@ -114,7 +114,14 @@ namespace Labyrinth
             }
 
             this.Drawer.PrintEndOrNewGame();
-            this.keyboard.ProcessInput(this.Moves, out movesCount);
+            try
+            {
+                this.keyboard.ProcessInput(this.Moves, out movesCount);
+            }
+            catch (ArgumentException)
+            {
+                this.Drawer.PrintInvalidCommandMessage();
+            }
         }
         
         private bool IsGameOver()
